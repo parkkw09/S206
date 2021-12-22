@@ -1,4 +1,8 @@
 .DS_Store
+.idea
 /build
 
-UserInterfaceState.xcuserstate
+# Xcode
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
