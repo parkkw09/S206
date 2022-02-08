@@ -6,4 +6,14 @@
   
 */
 
-"AppName" = "S206";
+"app_name" = "S206";
+"new_book" = "새로운 책";
+"detail_book" = "상세한 책";
+"bookmark" = "책갈피";
+"ascending" = "오름차순";
+"descending" = "내림차순";
+"history" = "검색기록";
+"search" = "검색";
+"search_hint" = "검색어";
+"add_bookmark" = "책갈피 추가";
+"delete_bookmark" = "책갈피 삭제";

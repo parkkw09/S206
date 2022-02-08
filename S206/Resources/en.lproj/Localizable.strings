@@ -6,4 +6,14 @@
   
 */
 
-"AppName" = "S206";
+"app_name" = "S206";
+"new_book" = "New";
+"detail_book" = "Detail Book";
+"bookmark" = "BookMark";
+"ascending" = "Ascending";
+"descending" = "Descending";
+"history" = "History";
+"search" = "Search";
+"search_hint" = "Search";
+"add_bookmark" = "Add Bookmark";
+"delete_bookmark" = "Delete Bookmark";

@@ -17,7 +17,8 @@
 		B45A3D6F275DB5F700660F6E /* S206Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6E275DB5F700660F6E /* S206Mapper.swift */; };
 		B45A3D71275DB60200660F6E /* S206Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D70275DB60200660F6E /* S206Model.swift */; };
 		B45A3D73275DB60F00660F6E /* S206Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D72275DB60F00660F6E /* S206Usecase.swift */; };
-		B47D0BAE277468A900DD9C2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BAA277468A900DD9C2C /* Assets.xcassets */; };
+		B46711D2277AB5C800C1597F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46711D1277AB5C800C1597F /* Colors.xcassets */; };
+		B46711D4277AB5D400C1597F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46711D3277AB5D400C1597F /* Images.xcassets */; };
 		B47D0BBA27746C5200DD9C2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BB927746C5200DD9C2C /* LaunchScreen.storyboard */; };
 		B47D0BBC27746C6300DD9C2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BBB27746C6300DD9C2C /* Main.storyboard */; };
 		B47D0BC327746D1A00DD9C2C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BC527746D1A00DD9C2C /* Localizable.strings */; };
@@ -35,8 +36,9 @@
 		B45A3D6E275DB5F700660F6E /* S206Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Mapper.swift; sourceTree = "<group>"; };
 		B45A3D70275DB60200660F6E /* S206Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Model.swift; sourceTree = "<group>"; };
 		B45A3D72275DB60F00660F6E /* S206Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Usecase.swift; sourceTree = "<group>"; };
+		B46711D1277AB5C800C1597F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B46711D3277AB5D400C1597F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B47D0BA9277468A900DD9C2C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B47D0BAA277468A900DD9C2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B47D0BB927746C5200DD9C2C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B47D0BBB27746C6300DD9C2C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B47D0BC427746D1A00DD9C2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -184,9 +186,10 @@
 		B47D0BA62774687F00DD9C2C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B47D0BAA277468A900DD9C2C /* Assets.xcassets */,
 				B47D0BA9277468A900DD9C2C /* Info.plist */,
 				B47D0BC527746D1A00DD9C2C /* Localizable.strings */,
+				B46711D1277AB5C800C1597F /* Colors.xcassets */,
+				B46711D3277AB5D400C1597F /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -278,9 +281,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46711D2277AB5C800C1597F /* Colors.xcassets in Resources */,
 				B47D0BC327746D1A00DD9C2C /* Localizable.strings in Resources */,
 				B47D0BBA27746C5200DD9C2C /* LaunchScreen.storyboard in Resources */,
-				B47D0BAE277468A900DD9C2C /* Assets.xcassets in Resources */,
+				B46711D4277AB5D400C1597F /* Images.xcassets in Resources */,
 				B47D0BBC27746C6300DD9C2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +445,7 @@
 		B45A3D55275DAE1200660F6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K68T34XSW2;
@@ -460,7 +464,7 @@
 		B45A3D56275DAE1200660F6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K68T34XSW2;

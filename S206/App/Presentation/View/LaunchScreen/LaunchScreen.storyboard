@@ -25,7 +25,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="Illuminating"/>
+                        <color key="backgroundColor" name="illuminating"/>
                         <constraints>
                             <constraint firstItem="Tmq-da-kYd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="4oe-T7-CVm"/>
                             <constraint firstItem="Tmq-da-kYd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Gu9-kf-g05"/>
@@ -35,11 +35,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-242.0289855072464" y="52.901785714285715"/>
+            <point key="canvasLocation" x="-159" y="54"/>
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Illuminating">
+        <namedColor name="illuminating">
             <color red="0.96078431372549022" green="0.87450980392156863" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
