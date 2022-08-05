@@ -13,15 +13,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let provider = MoyaProvider<SeoulDataApi>()
-        provider.request(.cultureEventInfo) { (response) in
-            switch response {
-                case .success(let _response):
-                    print("Moya() data [\(String(describing: _response.data))]")
-                case .failure(let error):
-                    print("Moya() Error [\(error.localizedDescription)]")
-            }
-        }
+//        let provider = MoyaProvider<SeoulDataApi>()
+//        provider.request(.cultureEventInfo) { (response) in
+//            switch response {
+//                case .success(let _response):
+//                    print("Moya() data [\(String(describing: _response.data))]")
+//                case .failure(let error):
+//                    print("Moya() Error [\(error.localizedDescription)]")
+//            }
+//        }
     }
 
 }

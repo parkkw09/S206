@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+class S206Data {
+    var bookmark: [Book] = []
+    var history: [String] = []
+}
