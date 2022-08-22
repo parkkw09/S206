@@ -30,21 +30,16 @@ class SeoulRepositoryImpl : SeoulRepository {
             print("getCultureInfo1() [\(data)]")
             return data
         }
-        print("Source is NULL.")
-        return CulturalEventInfoResponse()
+        throw SeoulError.requestFailure(message: "Source is NULL.")
     }
 
     func getCultureInfo2() async throws -> CulturalEventInfoResponse {
         print("getCultureInfo2() in SeoulRepository")
-        if let source = source {
-//            if let data = try? await source.getCultureEventInfo2() {
-//                print("getCultureInfo2() [\(data)]")
-//                return data
-//            }
-            let data = try await source.getCultureEventInfo2()
+        if let data = try? await source?.getCultureEventInfo2() {
             print("getCultureInfo2() [\(data)]")
             return data
+        } else {
+            throw SeoulError.requestFailure(message: "Source is NULL.")
         }
-        return CulturalEventInfoResponse()
     }
 }
