@@ -1,5 +1,5 @@
 //
-//  WeatherApi.swift
+//  LibraryApi.swift
 //  S206
 //
 //  Created by kwp-macbook-pro on 2022/08/05.
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class Api  {
+class LibraryApi  {
 
     let baseURL = URL(string: "https://api.itbook.store")!
 

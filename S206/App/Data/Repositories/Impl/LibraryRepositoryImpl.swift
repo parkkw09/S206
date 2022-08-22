@@ -9,17 +9,23 @@ import Foundation
 
 class LibraryRepositoryImpl: LibraryRepository {
 
-    var remoteSource: Api? = nil
+    var remoteSource: LibraryApi? = nil
     var localSource: S206Data? = nil
 
-    init(remote: Api, local: S206Data) {
+    init(remote: LibraryApi, local: S206Data) {
         remoteSource = remote
         localSource = local
     }
 
     func getNewBook() async throws -> ListBook {
         print("getNewBook() in LibraryRepository")
-        return try await remoteSource?.getNewBook() ?? ListBook()
+        if let source = remoteSource {
+            if let data = try? await source.getNewBook() {
+                print("getNewBook() [\(data)]")
+                return data
+            }
+        }
+        return ListBook()
     }
     
     func getDetailBook(isbn: String) async throws -> DetailBook {

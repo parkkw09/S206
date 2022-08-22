@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A61246D289CDC4400B02DEE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61246C289CDC4400B02DEE /* Api.swift */; };
+		0A61246D289CDC4400B02DEE /* LibraryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61246C289CDC4400B02DEE /* LibraryApi.swift */; };
 		0A61246F289CE6D100B02DEE /* ListBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61246E289CE6D100B02DEE /* ListBook.swift */; };
 		0A612471289CE77500B02DEE /* DetailBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A612470289CE77500B02DEE /* DetailBook.swift */; };
 		0A612474289CE9D200B02DEE /* LibraryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A612473289CE9D200B02DEE /* LibraryRepositoryImpl.swift */; };
-		0A61247C289CFE6300B02DEE /* S206Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61247B289CFE6300B02DEE /* S206Tests.swift */; };
-		0A97C3D228731CFF00CADCCF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A97C3D128731CFF00CADCCF /* CombineMoya */; };
-		0A97C3D428731CFF00CADCCF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A97C3D328731CFF00CADCCF /* Moya */; };
-		0A97C3D628731CFF00CADCCF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A97C3D528731CFF00CADCCF /* ReactiveMoya */; };
-		0A97C3D828731CFF00CADCCF /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A97C3D728731CFF00CADCCF /* RxMoya */; };
-		0A97C3DA28731D4A00CADCCF /* SeoulDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97C3D928731D4A00CADCCF /* SeoulDataApi.swift */; };
+		0A61247C289CFE6300B02DEE /* S206LibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61247B289CFE6300B02DEE /* S206LibraryTests.swift */; };
 		B45A3D44275DAE1000660F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D43275DAE1000660F6E /* AppDelegate.swift */; };
 		B45A3D46275DAE1000660F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D45275DAE1000660F6E /* SceneDelegate.swift */; };
 		B45A3D48275DAE1000660F6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D47275DAE1000660F6E /* MainViewController.swift */; };
@@ -26,6 +21,15 @@
 		B45A3D6F275DB5F700660F6E /* S206Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6E275DB5F700660F6E /* S206Mapper.swift */; };
 		B45A3D71275DB60200660F6E /* S206Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D70275DB60200660F6E /* S206Model.swift */; };
 		B45A3D73275DB60F00660F6E /* S206Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D72275DB60F00660F6E /* S206Usecase.swift */; };
+		B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C328B3162A009C46DB /* SeoulApi.swift */; };
+		B45C41C628B31706009C46DB /* SeoulRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C528B31706009C46DB /* SeoulRepository.swift */; };
+		B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */; };
+		B45C41CA28B3182B009C46DB /* S206SeoulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C928B3182B009C46DB /* S206SeoulTests.swift */; };
+		B45C41D628B33D95009C46DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B45C41D528B33D95009C46DB /* Alamofire */; };
+		B45C41D828B36A34009C46DB /* CulturalEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */; };
+		B45C41DB28B36F6B009C46DB /* CulturalEventInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */; };
+		B45C41DD28B36F86009C46DB /* CulturalEventInfoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41DC28B36F86009C46DB /* CulturalEventInfoResult.swift */; };
+		B45C41DF28B36FC1009C46DB /* CulturalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41DE28B36FC1009C46DB /* CulturalEvent.swift */; };
 		B46711D2277AB5C800C1597F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46711D1277AB5C800C1597F /* Colors.xcassets */; };
 		B46711D4277AB5D400C1597F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46711D3277AB5D400C1597F /* Images.xcassets */; };
 		B47D0BBA27746C5200DD9C2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BB927746C5200DD9C2C /* LaunchScreen.storyboard */; };
@@ -44,13 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A61246C289CDC4400B02DEE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		0A61246C289CDC4400B02DEE /* LibraryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryApi.swift; sourceTree = "<group>"; };
 		0A61246E289CE6D100B02DEE /* ListBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBook.swift; sourceTree = "<group>"; };
 		0A612470289CE77500B02DEE /* DetailBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBook.swift; sourceTree = "<group>"; };
 		0A612473289CE9D200B02DEE /* LibraryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRepositoryImpl.swift; sourceTree = "<group>"; };
 		0A612479289CFE6300B02DEE /* S206Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = S206Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A61247B289CFE6300B02DEE /* S206Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Tests.swift; sourceTree = "<group>"; };
-		0A97C3D928731D4A00CADCCF /* SeoulDataApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulDataApi.swift; sourceTree = "<group>"; };
+		0A61247B289CFE6300B02DEE /* S206LibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206LibraryTests.swift; sourceTree = "<group>"; };
 		B45A3D40275DAE1000660F6E /* S206.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S206.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A3D43275DAE1000660F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B45A3D45275DAE1000660F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +64,14 @@
 		B45A3D6E275DB5F700660F6E /* S206Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Mapper.swift; sourceTree = "<group>"; };
 		B45A3D70275DB60200660F6E /* S206Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Model.swift; sourceTree = "<group>"; };
 		B45A3D72275DB60F00660F6E /* S206Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Usecase.swift; sourceTree = "<group>"; };
+		B45C41C328B3162A009C46DB /* SeoulApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulApi.swift; sourceTree = "<group>"; };
+		B45C41C528B31706009C46DB /* SeoulRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepository.swift; sourceTree = "<group>"; };
+		B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepositoryImpl.swift; sourceTree = "<group>"; };
+		B45C41C928B3182B009C46DB /* S206SeoulTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206SeoulTests.swift; sourceTree = "<group>"; };
+		B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfo.swift; sourceTree = "<group>"; };
+		B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfoResponse.swift; sourceTree = "<group>"; };
+		B45C41DC28B36F86009C46DB /* CulturalEventInfoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfoResult.swift; sourceTree = "<group>"; };
+		B45C41DE28B36FC1009C46DB /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
 		B46711D1277AB5C800C1597F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B46711D3277AB5D400C1597F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B47D0BA9277468A900DD9C2C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,10 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A97C3D428731CFF00CADCCF /* Moya in Frameworks */,
-				0A97C3D228731CFF00CADCCF /* CombineMoya in Frameworks */,
-				0A97C3D828731CFF00CADCCF /* RxMoya in Frameworks */,
-				0A97C3D628731CFF00CADCCF /* ReactiveMoya in Frameworks */,
+				B45C41D628B33D95009C46DB /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				0A612473289CE9D200B02DEE /* LibraryRepositoryImpl.swift */,
+				B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -103,7 +112,8 @@
 		0A61247A289CFE6300B02DEE /* S206Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0A61247B289CFE6300B02DEE /* S206Tests.swift */,
+				0A61247B289CFE6300B02DEE /* S206LibraryTests.swift */,
+				B45C41C928B3182B009C46DB /* S206SeoulTests.swift */,
 			);
 			path = S206Tests;
 			sourceTree = "<group>";
@@ -183,6 +193,7 @@
 		B45A3D5E275DB2B100660F6E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B45C41D928B36E97009C46DB /* CulturalEventInfo */,
 				B45A3D6C275DB5EA00660F6E /* Book.swift */,
 				0A612470289CE77500B02DEE /* DetailBook.swift */,
 				0A61246E289CE6D100B02DEE /* ListBook.swift */,
@@ -211,6 +222,7 @@
 			children = (
 				0A612472289CE87D00B02DEE /* Impl */,
 				B45A3D6A275DB5DB00660F6E /* LibraryRepository.swift */,
+				B45C41C528B31706009C46DB /* SeoulRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -235,10 +247,21 @@
 		B45A3D65275DB34700660F6E /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				0A97C3D928731D4A00CADCCF /* SeoulDataApi.swift */,
-				0A61246C289CDC4400B02DEE /* Api.swift */,
+				0A61246C289CDC4400B02DEE /* LibraryApi.swift */,
+				B45C41C328B3162A009C46DB /* SeoulApi.swift */,
 			);
 			path = Remote;
+			sourceTree = "<group>";
+		};
+		B45C41D928B36E97009C46DB /* CulturalEventInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */,
+				B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */,
+				B45C41DC28B36F86009C46DB /* CulturalEventInfoResult.swift */,
+				B45C41DE28B36FC1009C46DB /* CulturalEvent.swift */,
+			);
+			path = CulturalEventInfo;
 			sourceTree = "<group>";
 		};
 		B47D0BA62774687F00DD9C2C /* Resources */ = {
@@ -316,10 +339,7 @@
 			);
 			name = S206;
 			packageProductDependencies = (
-				0A97C3D128731CFF00CADCCF /* CombineMoya */,
-				0A97C3D328731CFF00CADCCF /* Moya */,
-				0A97C3D528731CFF00CADCCF /* ReactiveMoya */,
-				0A97C3D728731CFF00CADCCF /* RxMoya */,
+				B45C41D528B33D95009C46DB /* Alamofire */,
 			);
 			productName = S206;
 			productReference = B45A3D40275DAE1000660F6E /* S206.app */;
@@ -354,7 +374,7 @@
 			);
 			mainGroup = B45A3D37275DAE1000660F6E;
 			packageReferences = (
-				0A97C3D028731CFF00CADCCF /* XCRemoteSwiftPackageReference "Moya" */,
+				B45C41D428B33D95009C46DB /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = B45A3D41275DAE1000660F6E /* Products */;
 			projectDirPath = "";
@@ -393,7 +413,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A61247C289CFE6300B02DEE /* S206Tests.swift in Sources */,
+				0A61247C289CFE6300B02DEE /* S206LibraryTests.swift in Sources */,
+				B45C41CA28B3182B009C46DB /* S206SeoulTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,15 +426,21 @@
 				B45A3D69275DB5CC00660F6E /* S206Data.swift in Sources */,
 				0A612471289CE77500B02DEE /* DetailBook.swift in Sources */,
 				B45A3D6B275DB5DB00660F6E /* LibraryRepository.swift in Sources */,
+				B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */,
 				B45A3D6F275DB5F700660F6E /* S206Mapper.swift in Sources */,
 				B45A3D44275DAE1000660F6E /* AppDelegate.swift in Sources */,
-				0A61246D289CDC4400B02DEE /* Api.swift in Sources */,
+				0A61246D289CDC4400B02DEE /* LibraryApi.swift in Sources */,
+				B45C41C628B31706009C46DB /* SeoulRepository.swift in Sources */,
+				B45C41DD28B36F86009C46DB /* CulturalEventInfoResult.swift in Sources */,
+				B45C41DB28B36F6B009C46DB /* CulturalEventInfoResponse.swift in Sources */,
 				B45A3D71275DB60200660F6E /* S206Model.swift in Sources */,
-				0A97C3DA28731D4A00CADCCF /* SeoulDataApi.swift in Sources */,
+				B45C41DF28B36FC1009C46DB /* CulturalEvent.swift in Sources */,
 				0A612474289CE9D200B02DEE /* LibraryRepositoryImpl.swift in Sources */,
 				0A61246F289CE6D100B02DEE /* ListBook.swift in Sources */,
 				B45A3D6D275DB5EA00660F6E /* Book.swift in Sources */,
+				B45C41D828B36A34009C46DB /* CulturalEventInfo.swift in Sources */,
 				B45A3D73275DB60F00660F6E /* S206Usecase.swift in Sources */,
+				B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */,
 				B45A3D46275DAE1000660F6E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,14 +473,16 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K68T34XSW2;
+				DEVELOPMENT_TEAM = 2VQ7QN5M2A;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.peter.S206Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -466,14 +495,16 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K68T34XSW2;
+				DEVELOPMENT_TEAM = 2VQ7QN5M2A;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.peter.S206Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -674,36 +705,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A97C3D028731CFF00CADCCF /* XCRemoteSwiftPackageReference "Moya" */ = {
+		B45C41D428B33D95009C46DB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya.git";
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.0;
+				minimumVersion = 5.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A97C3D128731CFF00CADCCF /* CombineMoya */ = {
+		B45C41D528B33D95009C46DB /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A97C3D028731CFF00CADCCF /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = CombineMoya;
-		};
-		0A97C3D328731CFF00CADCCF /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A97C3D028731CFF00CADCCF /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-		0A97C3D528731CFF00CADCCF /* ReactiveMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A97C3D028731CFF00CADCCF /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = ReactiveMoya;
-		};
-		0A97C3D728731CFF00CADCCF /* RxMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A97C3D028731CFF00CADCCF /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = RxMoya;
+			package = B45C41D428B33D95009C46DB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
