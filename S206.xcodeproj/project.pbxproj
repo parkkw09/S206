@@ -12,15 +12,17 @@
 		0A612471289CE77500B02DEE /* DetailBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A612470289CE77500B02DEE /* DetailBook.swift */; };
 		0A612474289CE9D200B02DEE /* LibraryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A612473289CE9D200B02DEE /* LibraryRepositoryImpl.swift */; };
 		0A61247C289CFE6300B02DEE /* S206LibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61247B289CFE6300B02DEE /* S206LibraryTests.swift */; };
+		B4150D9228BC94B400934C3F /* SeoulUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9128BC94B400934C3F /* SeoulUsecase.swift */; };
+		B4150D9528BC94D800934C3F /* SeoulUsecaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */; };
+		B4150D9728BC992800934C3F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9628BC992800934C3F /* Response.swift */; };
 		B45A3D44275DAE1000660F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D43275DAE1000660F6E /* AppDelegate.swift */; };
 		B45A3D46275DAE1000660F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D45275DAE1000660F6E /* SceneDelegate.swift */; };
 		B45A3D48275DAE1000660F6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D47275DAE1000660F6E /* MainViewController.swift */; };
 		B45A3D69275DB5CC00660F6E /* S206Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D68275DB5CC00660F6E /* S206Data.swift */; };
 		B45A3D6B275DB5DB00660F6E /* LibraryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6A275DB5DB00660F6E /* LibraryRepository.swift */; };
 		B45A3D6D275DB5EA00660F6E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6C275DB5EA00660F6E /* Book.swift */; };
-		B45A3D6F275DB5F700660F6E /* S206Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6E275DB5F700660F6E /* S206Mapper.swift */; };
-		B45A3D71275DB60200660F6E /* S206Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D70275DB60200660F6E /* S206Model.swift */; };
-		B45A3D73275DB60F00660F6E /* S206Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D72275DB60F00660F6E /* S206Usecase.swift */; };
+		B45A3D6F275DB5F700660F6E /* SeoulTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6E275DB5F700660F6E /* SeoulTranslator.swift */; };
+		B45A3D71275DB60200660F6E /* NewCultureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D70275DB60200660F6E /* NewCultureEvent.swift */; };
 		B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C328B3162A009C46DB /* SeoulApi.swift */; };
 		B45C41C628B31706009C46DB /* SeoulRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C528B31706009C46DB /* SeoulRepository.swift */; };
 		B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */; };
@@ -30,10 +32,6 @@
 		B45C41DB28B36F6B009C46DB /* CulturalEventInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */; };
 		B45C41DD28B36F86009C46DB /* CulturalEventInfoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41DC28B36F86009C46DB /* CulturalEventInfoResult.swift */; };
 		B45C41DF28B36FC1009C46DB /* CulturalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41DE28B36FC1009C46DB /* CulturalEvent.swift */; };
-		B45C41E128B46982009C46DB /* S206UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41E028B46982009C46DB /* S206UnitTest.swift */; };
-		B45C41E228B46982009C46DB /* S206UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41E028B46982009C46DB /* S206UnitTest.swift */; };
-		B45C41E428B469A6009C46DB /* S206UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41E328B469A6009C46DB /* S206UITest.swift */; };
-		B45C41E528B469A6009C46DB /* S206UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41E328B469A6009C46DB /* S206UITest.swift */; };
 		B46711D2277AB5C800C1597F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46711D1277AB5C800C1597F /* Colors.xcassets */; };
 		B46711D4277AB5D400C1597F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46711D3277AB5D400C1597F /* Images.xcassets */; };
 		B47D0BBA27746C5200DD9C2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BB927746C5200DD9C2C /* LaunchScreen.storyboard */; };
@@ -58,6 +56,9 @@
 		0A612473289CE9D200B02DEE /* LibraryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRepositoryImpl.swift; sourceTree = "<group>"; };
 		0A612479289CFE6300B02DEE /* S206Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = S206Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A61247B289CFE6300B02DEE /* S206LibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206LibraryTests.swift; sourceTree = "<group>"; };
+		B4150D9128BC94B400934C3F /* SeoulUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulUsecase.swift; sourceTree = "<group>"; };
+		B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulUsecaseImpl.swift; sourceTree = "<group>"; };
+		B4150D9628BC992800934C3F /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		B45A3D40275DAE1000660F6E /* S206.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S206.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A3D43275DAE1000660F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B45A3D45275DAE1000660F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,9 +66,8 @@
 		B45A3D68275DB5CC00660F6E /* S206Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Data.swift; sourceTree = "<group>"; };
 		B45A3D6A275DB5DB00660F6E /* LibraryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRepository.swift; sourceTree = "<group>"; };
 		B45A3D6C275DB5EA00660F6E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		B45A3D6E275DB5F700660F6E /* S206Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Mapper.swift; sourceTree = "<group>"; };
-		B45A3D70275DB60200660F6E /* S206Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Model.swift; sourceTree = "<group>"; };
-		B45A3D72275DB60F00660F6E /* S206Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206Usecase.swift; sourceTree = "<group>"; };
+		B45A3D6E275DB5F700660F6E /* SeoulTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulTranslator.swift; sourceTree = "<group>"; };
+		B45A3D70275DB60200660F6E /* NewCultureEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCultureEvent.swift; sourceTree = "<group>"; };
 		B45C41C328B3162A009C46DB /* SeoulApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulApi.swift; sourceTree = "<group>"; };
 		B45C41C528B31706009C46DB /* SeoulRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepository.swift; sourceTree = "<group>"; };
 		B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -76,8 +76,6 @@
 		B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfoResponse.swift; sourceTree = "<group>"; };
 		B45C41DC28B36F86009C46DB /* CulturalEventInfoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfoResult.swift; sourceTree = "<group>"; };
 		B45C41DE28B36FC1009C46DB /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
-		B45C41E028B46982009C46DB /* S206UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206UnitTest.swift; sourceTree = "<group>"; };
-		B45C41E328B469A6009C46DB /* S206UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206UITest.swift; sourceTree = "<group>"; };
 		B46711D1277AB5C800C1597F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B46711D3277AB5D400C1597F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B47D0BA9277468A900DD9C2C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,10 +118,16 @@
 			children = (
 				0A61247B289CFE6300B02DEE /* S206LibraryTests.swift */,
 				B45C41C928B3182B009C46DB /* S206SeoulTests.swift */,
-				B45C41E028B46982009C46DB /* S206UnitTest.swift */,
-				B45C41E328B469A6009C46DB /* S206UITest.swift */,
 			);
 			path = S206Tests;
+			sourceTree = "<group>";
+		};
+		B4150D9328BC94BF00934C3F /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		B45A3D37275DAE1000660F6E = {
@@ -164,7 +168,7 @@
 		B45A3D5A275DB22E00660F6E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D61275DB2EE00660F6E /* Mappers */,
+				B45A3D61275DB2EE00660F6E /* Translator */,
 				B45A3D5F275DB2DC00660F6E /* Models */,
 				B45A3D5D275DB26100660F6E /* Usecases */,
 			);
@@ -193,7 +197,8 @@
 		B45A3D5D275DB26100660F6E /* Usecases */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D72275DB60F00660F6E /* S206Usecase.swift */,
+				B4150D9328BC94BF00934C3F /* Impl */,
+				B4150D9128BC94B400934C3F /* SeoulUsecase.swift */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -212,17 +217,18 @@
 		B45A3D5F275DB2DC00660F6E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D70275DB60200660F6E /* S206Model.swift */,
+				B45A3D70275DB60200660F6E /* NewCultureEvent.swift */,
+				B4150D9628BC992800934C3F /* Response.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		B45A3D61275DB2EE00660F6E /* Mappers */ = {
+		B45A3D61275DB2EE00660F6E /* Translator */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D6E275DB5F700660F6E /* S206Mapper.swift */,
+				B45A3D6E275DB5F700660F6E /* SeoulTranslator.swift */,
 			);
-			path = Mappers;
+			path = Translator;
 			sourceTree = "<group>";
 		};
 		B45A3D62275DB30500660F6E /* Repositories */ = {
@@ -421,9 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B45C41E528B469A6009C46DB /* S206UITest.swift in Sources */,
 				0A61247C289CFE6300B02DEE /* S206LibraryTests.swift in Sources */,
-				B45C41E228B46982009C46DB /* S206UnitTest.swift in Sources */,
 				B45C41CA28B3182B009C46DB /* S206SeoulTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,22 +441,22 @@
 				0A612471289CE77500B02DEE /* DetailBook.swift in Sources */,
 				B45A3D6B275DB5DB00660F6E /* LibraryRepository.swift in Sources */,
 				B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */,
-				B45A3D6F275DB5F700660F6E /* S206Mapper.swift in Sources */,
+				B45A3D6F275DB5F700660F6E /* SeoulTranslator.swift in Sources */,
 				B45A3D44275DAE1000660F6E /* AppDelegate.swift in Sources */,
-				B45C41E128B46982009C46DB /* S206UnitTest.swift in Sources */,
 				0A61246D289CDC4400B02DEE /* LibraryApi.swift in Sources */,
 				B45C41C628B31706009C46DB /* SeoulRepository.swift in Sources */,
 				B45C41DD28B36F86009C46DB /* CulturalEventInfoResult.swift in Sources */,
+				B4150D9728BC992800934C3F /* Response.swift in Sources */,
 				B45C41DB28B36F6B009C46DB /* CulturalEventInfoResponse.swift in Sources */,
-				B45A3D71275DB60200660F6E /* S206Model.swift in Sources */,
+				B45A3D71275DB60200660F6E /* NewCultureEvent.swift in Sources */,
 				B45C41DF28B36FC1009C46DB /* CulturalEvent.swift in Sources */,
 				0A612474289CE9D200B02DEE /* LibraryRepositoryImpl.swift in Sources */,
+				B4150D9228BC94B400934C3F /* SeoulUsecase.swift in Sources */,
 				0A61246F289CE6D100B02DEE /* ListBook.swift in Sources */,
 				B45A3D6D275DB5EA00660F6E /* Book.swift in Sources */,
 				B45C41D828B36A34009C46DB /* CulturalEventInfo.swift in Sources */,
-				B45A3D73275DB60F00660F6E /* S206Usecase.swift in Sources */,
 				B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */,
-				B45C41E428B469A6009C46DB /* S206UITest.swift in Sources */,
+				B4150D9528BC94D800934C3F /* SeoulUsecaseImpl.swift in Sources */,
 				B45A3D46275DAE1000660F6E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,6 +566,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -624,6 +629,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

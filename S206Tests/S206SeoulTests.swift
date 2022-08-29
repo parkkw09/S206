@@ -11,10 +11,12 @@ import XCTest
 class S206SeoulTests: XCTestCase {
 
     var repository: SeoulRepository? = nil
+    var usecase: SeoulUsecase? = nil
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         repository = SeoulRepositoryImpl(remote: SeoulApi())
+        usecase = SeoulUsecaseImpl(repo: repository)
     }
 
     override func tearDownWithError() throws {
@@ -54,6 +56,19 @@ class S206SeoulTests: XCTestCase {
         }
     }
 
+    func testGetCultureInfoInUsecase() throws {
+        Task {
+            do {
+                if let data = try await usecase?.getCultureInfo() {
+                    print("testGetCultureInfoInUsecase() result[\(data)]")
+                } else {
+                    throw SeoulError.requestFailure(message: "usecase is NULL")
+                }
+            } catch {
+                print("Unexpected error: \(error).")
+            }
+        }
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

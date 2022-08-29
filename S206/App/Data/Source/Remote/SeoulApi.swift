@@ -16,14 +16,19 @@ enum SeoulError: Error {
 class SeoulApi  {
 
     let baseURL = URL(string: "http://openapi.seoul.go.kr:8088")!
-    let key = "7a4f58414a7061723736646a57694a"
     let dataType = "json"
     let command = "culturalEventInfo"
 
     func getCultureEventInfo1(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
         print("getCultureEventInfo1() in Api")
+
+        guard let key = Bundle.main.object(forInfoDictionaryKey: "SEOUL_KEY") as? String else {
+            throw SeoulError.reponseFailure(message: "api key is nil")
+        }
+
         let requestUrl = "\(baseURL)/\(key)/\(dataType)/\(command)/\(startIndex)/\(endIndex)/"
         print("getCultureEventInfo1() in Api URL[\(requestUrl)]")
+
         let response = await AF.request(requestUrl,
                                     method: HTTPMethod.get,
                                     parameters: nil,
@@ -45,8 +50,14 @@ class SeoulApi  {
 
     func getCultureEventInfo2(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
         print("getCultureEventInfo2() in Api")
+
+        guard let key = Bundle.main.object(forInfoDictionaryKey: "SEOUL_KEY") as? String else {
+            throw SeoulError.reponseFailure(message: "api key is nil")
+        }
+
         let requestUrl = "\(baseURL)/\(key)/\(dataType)/\(command)/\(startIndex)/\(endIndex)/"
         print("getCultureEventInfo2() in Api URL[\(requestUrl)]")
+
         return try await AF.request(requestUrl,
                                     method: HTTPMethod.get,
                                     parameters: nil,
