@@ -37,6 +37,7 @@
 		B47D0BBA27746C5200DD9C2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BB927746C5200DD9C2C /* LaunchScreen.storyboard */; };
 		B47D0BBC27746C6300DD9C2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BBB27746C6300DD9C2C /* Main.storyboard */; };
 		B47D0BC327746D1A00DD9C2C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BC527746D1A00DD9C2C /* Localizable.strings */; };
+		F3F542B628EAF94C0081E00A /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F3F542B528EAF94C0081E00A /* Swinject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45C41D628B33D95009C46DB /* Alamofire in Frameworks */,
+				F3F542B628EAF94C0081E00A /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +356,7 @@
 			name = S206;
 			packageProductDependencies = (
 				B45C41D528B33D95009C46DB /* Alamofire */,
+				F3F542B528EAF94C0081E00A /* Swinject */,
 			);
 			productName = S206;
 			productReference = B45A3D40275DAE1000660F6E /* S206.app */;
@@ -378,7 +381,7 @@
 				};
 			};
 			buildConfigurationList = B45A3D3B275DAE1000660F6E /* Build configuration list for PBXProject "S206" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -389,6 +392,7 @@
 			mainGroup = B45A3D37275DAE1000660F6E;
 			packageReferences = (
 				B45C41D428B33D95009C46DB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F3F542B428EAF94C0081E00A /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = B45A3D41275DAE1000660F6E /* Products */;
 			projectDirPath = "";
@@ -654,17 +658,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7SM4FR2PM4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/S206/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.peter.S206;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = MobileClientWildCardProvisioning;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -675,17 +680,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7SM4FR2PM4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/S206/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.peter.S206;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = MobileClientWildCardProvisioning;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -732,6 +738,14 @@
 				minimumVersion = 5.5.0;
 			};
 		};
+		F3F542B428EAF94C0081E00A /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -739,6 +753,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B45C41D428B33D95009C46DB /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F3F542B528EAF94C0081E00A /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F542B428EAF94C0081E00A /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let mainScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: mainScene)
+        // 이부분을 좀더 이해할 필요가 있음. 다른 뷰 컨트롤러에는 어떻게 주입?
+        self.window?.rootViewController = appDelegate.container.resolve(MainViewController.self)
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
