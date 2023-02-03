@@ -17,7 +17,7 @@ class SeoulUsecaseImpl: SeoulUsecase {
 
     func getCultureInfo() async throws -> Response<NewCultureEvent> {
         if let repo = repository {
-            let data = try await repo.getCultureInfo1()
+            let data = try await repo.getCultureInfo()
             let response = SeoulTranslator.getCultureEventInfo(response: data)
             if (response.code != "INFO-000") {
                 throw SeoulError.reponseFailure(message: "response code[\(response.code)], message[\(response.message)]")

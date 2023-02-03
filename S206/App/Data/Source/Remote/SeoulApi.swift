@@ -8,18 +8,22 @@
 import Foundation
 import Alamofire
 
-enum SeoulError: Error {
+enum SeoulError : Error {
     case reponseFailure(message: String)
     case requestFailure(message: String)
 }
 
-class SeoulApi  {
+class SeoulApi : SeoulDataSource  {
 
     let baseURL = URL(string: "http://openapi.seoul.go.kr:8088")!
     let dataType = "json"
     let command = "culturalEventInfo"
 
-    func getCultureEventInfo1(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
+    func getCultureInfo() async throws -> CulturalEventInfoResponse {
+        return try await getCultureEventInfo1()
+    }
+
+    private func getCultureEventInfo1(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
         print("getCultureEventInfo1() in Api")
 
         guard let key = Bundle.main.object(forInfoDictionaryKey: "SEOUL_KEY") as? String else {
@@ -48,7 +52,7 @@ class SeoulApi  {
         }
     }
 
-    func getCultureEventInfo2(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
+    private func getCultureEventInfo2(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
         print("getCultureEventInfo2() in Api")
 
         guard let key = Bundle.main.object(forInfoDictionaryKey: "SEOUL_KEY") as? String else {

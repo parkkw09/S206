@@ -11,24 +11,24 @@ import Swinject
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let container = {
-        let container = Container()
-        // 모듈을 등록하라
-        // container.register(Animal.self) { _ in Cat(name: "Mimi") }
-        container.register(SeoulRepository.self) { _ in SeoulRepositoryImpl(remote: SeoulApi()) }
-        container.register(SeoulUsecase.self) { resolver in SeoulUsecaseImpl(repo: resolver.resolve(SeoulRepository.self)) }
-        container.register(MainViewController.self) { resolver in
-            let controller = MainViewController()
-            // 뷰 컨트롤러에 모듈 주입
-            controller.seoulUsecase = resolver.resolve(SeoulUsecase.self)
-            return controller
-        }
-        return container
-    }()
+//    let container = {
+//        let container = Container()
+//        // 모듈을 등록하라
+//        // container.register(Animal.self) { _ in Cat(name: "Mimi") }
+//        container.register(SeoulRepository.self) { _ in SeoulRepositoryImpl(_source: SeoulApi()) }
+//        container.register(SeoulUsecase.self) { resolver in SeoulUsecaseImpl(repo: resolver.resolve(SeoulRepository.self)) }
+//        container.register(MainViewController.self) { resolver in
+//            let controller = MainViewController()
+//            // 뷰 컨트롤러에 모듈 주입
+//            controller.seoulUsecase = resolver.resolve(SeoulUsecase.self)
+//            return controller
+//        }
+//        return container
+//    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        sleep(1)
+        // sleep(1)
         return true
     }
 

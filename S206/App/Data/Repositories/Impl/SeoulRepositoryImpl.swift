@@ -9,10 +9,14 @@ import Foundation
 
 class SeoulRepositoryImpl : SeoulRepository {
 
-    var source: SeoulApi? = nil
+    var source: SeoulDataSource? = nil
 
-    init(remote: SeoulApi) {
-        source = remote
+    init(_source: SeoulDataSource) {
+        source = _source
+    }
+
+    func getCultureInfo() async throws -> CulturalEventInfoResponse {
+        return try await getCultureInfo1()
     }
 
     func getCultureInfo1() async throws -> CulturalEventInfoResponse {
@@ -26,7 +30,7 @@ class SeoulRepositoryImpl : SeoulRepository {
 //                print("Unexpected error: \(error).")
 //                return SeoulResponse()
 //            }
-            let data = try await source.getCultureEventInfo1()
+            let data = try await source.getCultureInfo()
             print("getCultureInfo1() [\(data)]")
             return data
         }
@@ -35,7 +39,7 @@ class SeoulRepositoryImpl : SeoulRepository {
 
     func getCultureInfo2() async throws -> CulturalEventInfoResponse {
         print("getCultureInfo2() in SeoulRepository")
-        if let data = try? await source?.getCultureEventInfo2() {
+        if let data = try? await source?.getCultureInfo() {
             print("getCultureInfo2() [\(data)]")
             return data
         } else {
