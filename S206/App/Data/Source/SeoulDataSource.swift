@@ -2,11 +2,12 @@
 //  SeoulDataSource.swift
 //  S206
 //
-//  Created by 박관웅 [parkkw09] on 2023/02/03.
+//  Repository 가 조율할 Remote DataSource 계약.
+//  (Local 이 필요해지면 SeoulLocalDataSource 를 별도 프로토콜로 추가합니다.)
 //
 
 import Foundation
 
-protocol SeoulDataSource {
-    func getCultureInfo() async throws -> CulturalEventInfoResponse
+protocol SeoulRemoteDataSource {
+    func getCultureInfo(startIndex: Int, endIndex: Int) async throws -> CulturalEventInfoResponse
 }

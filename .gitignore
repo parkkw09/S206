@@ -6,3 +6,6 @@
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
+
+# Secrets — 개발자 로컬 전용 (Secrets.xcconfig.example 만 커밋)
+Config/Secrets.xcconfig

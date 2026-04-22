@@ -2,73 +2,54 @@
 //  SeoulApi.swift
 //  S206
 //
-//  Created by 박관웅 [parkkw09] on 2022/08/22.
-//
 
 import Foundation
 import Alamofire
 
-enum SeoulError : Error {
-    case reponseFailure(message: String)
-    case requestFailure(message: String)
-}
+final class SeoulApi: SeoulRemoteDataSource {
 
-class SeoulApi : SeoulDataSource  {
+    private let config: NetworkConfig
+    private let session: Session
 
-    let baseURL = URL(string: "http://openapi.seoul.go.kr:8088")!
-    let dataType = "json"
-    let command = "culturalEventInfo"
-
-    func getCultureInfo() async throws -> CulturalEventInfoResponse {
-        return try await getCultureEventInfo1()
+    init(config: NetworkConfig, session: Session = .default) {
+        self.config = config
+        self.session = session
     }
 
-    private func getCultureEventInfo1(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
-        print("getCultureEventInfo1() in Api")
+    func getCultureInfo(startIndex: Int, endIndex: Int) async throws -> CulturalEventInfoResponse {
+        let url = buildURL(startIndex: startIndex, endIndex: endIndex)
 
-        guard let key = Bundle.main.object(forInfoDictionaryKey: "SEOUL_KEY") as? String else {
-            throw SeoulError.reponseFailure(message: "api key is nil")
-        }
+        let task = session.request(url,
+                                   method: .get,
+                                   parameters: nil,
+                                   encoding: URLEncoding.default)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .serializingDecodable(CulturalEventInfoResponse.self)
 
-        let requestUrl = "\(baseURL)/\(key)/\(dataType)/\(command)/\(startIndex)/\(endIndex)/"
-        print("getCultureEventInfo1() in Api URL[\(requestUrl)]")
-
-        let response = await AF.request(requestUrl,
-                                    method: HTTPMethod.get,
-                                    parameters: nil,
-                                    encoding: URLEncoding.default)
-                        .validate(statusCode: 200..<500)
-                        .validate(contentType: ["application/json"])
-                        .serializingDecodable(CulturalEventInfoResponse.self)
-                        .response
+        let response = await task.response
 
         switch response.result {
-            case .success(let data):
-                print("getCultureEventInfo1() in Api data[\(data)]")
-                return data
-            case .failure(let error):
-                print("getCultureEventInfo1) in Api error[\(error.localizedDescription)]")
-                throw SeoulError.reponseFailure(message: error.localizedDescription)
+        case .success(let data):
+            return data
+        case .failure(let error):
+            throw Self.mapToSeoulError(error)
         }
     }
 
-    private func getCultureEventInfo2(startIndex: Int = 1, endIndex: Int = 5) async throws -> CulturalEventInfoResponse {
-        print("getCultureEventInfo2() in Api")
+    private func buildURL(startIndex: Int, endIndex: Int) -> String {
+        let base = config.baseURL.absoluteString
+        return "\(base)/\(config.apiKey)/\(config.dataType)/\(config.command)/\(startIndex)/\(endIndex)/"
+    }
 
-        guard let key = Bundle.main.object(forInfoDictionaryKey: "SEOUL_KEY") as? String else {
-            throw SeoulError.reponseFailure(message: "api key is nil")
+    private static func mapToSeoulError(_ error: AFError) -> SeoulError {
+        switch error {
+        case .responseSerializationFailed:
+            return .decoding(message: error.localizedDescription)
+        case .sessionTaskFailed, .invalidURL, .requestAdaptationFailed, .requestRetryFailed:
+            return .network(message: error.localizedDescription)
+        default:
+            return .unknown(message: error.localizedDescription)
         }
-
-        let requestUrl = "\(baseURL)/\(key)/\(dataType)/\(command)/\(startIndex)/\(endIndex)/"
-        print("getCultureEventInfo2() in Api URL[\(requestUrl)]")
-
-        return try await AF.request(requestUrl,
-                                    method: HTTPMethod.get,
-                                    parameters: nil,
-                                    encoding: URLEncoding.default)
-                        .validate(statusCode: 200..<500)
-                        .validate(contentType: ["application/json"])
-                        .serializingDecodable(CulturalEventInfoResponse.self)
-                        .value
     }
 }

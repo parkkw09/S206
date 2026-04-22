@@ -2,28 +2,21 @@
 //  SeoulUsecaseImpl.swift
 //  S206
 //
-//  Created by 박관웅 [parkkw09] on 2022/08/29.
+//  Domain 은 Repository(Domain) 외의 것은 알지 않습니다.
+//  매핑과 서버 응답 코드 검증은 Data 레이어로 이동했습니다.
 //
 
 import Foundation
 
-class SeoulUsecaseImpl: SeoulUsecase {
+final class SeoulUsecaseImpl: SeoulUsecase {
 
-    var repository: SeoulRepository? = nil
+    private let repository: SeoulRepository
 
-    init(repo: SeoulRepository?) {
-        repository = repo
+    init(repository: SeoulRepository) {
+        self.repository = repository
     }
 
-    func getCultureInfo() async throws -> Response<NewCultureEvent> {
-        if let repo = repository {
-            let data = try await repo.getCultureInfo()
-            let response = SeoulTranslator.getCultureEventInfo(response: data)
-            if (response.code != "INFO-000") {
-                throw SeoulError.reponseFailure(message: "response code[\(response.code)], message[\(response.message)]")
-            }
-            return  response
-        }
-        throw SeoulError.requestFailure(message: "Repository is NULL.")
+    func getCultureInfo(startIndex: Int, endIndex: Int) async throws -> Response<NewCultureEvent> {
+        try await repository.getCultureInfo(startIndex: startIndex, endIndex: endIndex)
     }
 }

@@ -14,12 +14,14 @@
 		B45A3D44275DAE1000660F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D43275DAE1000660F6E /* AppDelegate.swift */; };
 		B45A3D46275DAE1000660F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D45275DAE1000660F6E /* SceneDelegate.swift */; };
 		B45A3D48275DAE1000660F6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D47275DAE1000660F6E /* MainViewController.swift */; };
-		B45A3D69275DB5CC00660F6E /* SeoulData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D68275DB5CC00660F6E /* SeoulData.swift */; };
-		B45A3D6F275DB5F700660F6E /* SeoulTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D6E275DB5F700660F6E /* SeoulTranslator.swift */; };
 		B45A3D71275DB60200660F6E /* NewCultureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D70275DB60200660F6E /* NewCultureEvent.swift */; };
 		B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C328B3162A009C46DB /* SeoulApi.swift */; };
-		B45C41C628B31706009C46DB /* SeoulRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C528B31706009C46DB /* SeoulRepository.swift */; };
 		B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */; };
+		BA000000000000000000AAA3 /* SeoulError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000AAA2 /* SeoulError.swift */; };
+		BA000000000000000000BBB3 /* SeoulRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000BBB2 /* SeoulRepository.swift */; };
+		BA000000000000000000CCC3 /* SeoulMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000CCC2 /* SeoulMapper.swift */; };
+		BA000000000000000000DDD2 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000DDD1 /* NetworkConfig.swift */; };
+		BA000000000000000000EEE3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000EEE2 /* AppContainer.swift */; };
 		B45C41CA28B3182B009C46DB /* S206SeoulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C928B3182B009C46DB /* S206SeoulTests.swift */; };
 		B45C41D628B33D95009C46DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B45C41D528B33D95009C46DB /* Alamofire */; };
 		B45C41D828B36A34009C46DB /* CulturalEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */; };
@@ -54,12 +56,14 @@
 		B45A3D43275DAE1000660F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B45A3D45275DAE1000660F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B45A3D47275DAE1000660F6E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		B45A3D68275DB5CC00660F6E /* SeoulData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulData.swift; sourceTree = "<group>"; };
-		B45A3D6E275DB5F700660F6E /* SeoulTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulTranslator.swift; sourceTree = "<group>"; };
 		B45A3D70275DB60200660F6E /* NewCultureEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCultureEvent.swift; sourceTree = "<group>"; };
 		B45C41C328B3162A009C46DB /* SeoulApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulApi.swift; sourceTree = "<group>"; };
-		B45C41C528B31706009C46DB /* SeoulRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepository.swift; sourceTree = "<group>"; };
 		B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepositoryImpl.swift; sourceTree = "<group>"; };
+		BA000000000000000000AAA2 /* SeoulError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulError.swift; sourceTree = "<group>"; };
+		BA000000000000000000BBB2 /* SeoulRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepository.swift; sourceTree = "<group>"; };
+		BA000000000000000000CCC2 /* SeoulMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulMapper.swift; sourceTree = "<group>"; };
+		BA000000000000000000DDD1 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		BA000000000000000000EEE2 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		B45C41C928B3182B009C46DB /* S206SeoulTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206SeoulTests.swift; sourceTree = "<group>"; };
 		B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfo.swift; sourceTree = "<group>"; };
 		B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfoResponse.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		B47D0BBB27746C6300DD9C2C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B47D0BC427746D1A00DD9C2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B47D0BC627746D2A00DD9C2C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA000000000000000000FFF1 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		BA000000000000000000FFF2 /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +129,18 @@
 			children = (
 				B45A3D42275DAE1000660F6E /* S206 */,
 				0A61247A289CFE6300B02DEE /* S206Tests */,
+				BA000000000000000000FFF3 /* Config */,
 				B45A3D41275DAE1000660F6E /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		BA000000000000000000FFF3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				BA000000000000000000FFF1 /* Secrets.xcconfig */,
+				BA000000000000000000FFF2 /* Secrets.xcconfig.example */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		B45A3D41275DAE1000660F6E /* Products */ = {
@@ -156,8 +172,9 @@
 		B45A3D5A275DB22E00660F6E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D61275DB2EE00660F6E /* Translator */,
+				BA000000000000000000AAA1 /* Errors */,
 				B45A3D5F275DB2DC00660F6E /* Models */,
+				BA000000000000000000BBB1 /* Repositories */,
 				B45A3D5D275DB26100660F6E /* Usecases */,
 			);
 			path = Domain;
@@ -167,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				B45A3D5E275DB2B100660F6E /* Entities */,
+				BA000000000000000000CCC1 /* Mapper */,
 				B45A3D62275DB30500660F6E /* Repositories */,
 				B45A3D63275DB33A00660F6E /* Source */,
 			);
@@ -208,19 +226,10 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		B45A3D61275DB2EE00660F6E /* Translator */ = {
-			isa = PBXGroup;
-			children = (
-				B45A3D6E275DB5F700660F6E /* SeoulTranslator.swift */,
-			);
-			path = Translator;
-			sourceTree = "<group>";
-		};
 		B45A3D62275DB30500660F6E /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				0A612472289CE87D00B02DEE /* Impl */,
-				B45C41C528B31706009C46DB /* SeoulRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -228,24 +237,16 @@
 		B45A3D63275DB33A00660F6E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D64275DB34300660F6E /* Local */,
 				B45A3D65275DB34700660F6E /* Remote */,
 				B41DE5D9298CE33200532603 /* SeoulDataSource.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		B45A3D64275DB34300660F6E /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				B45A3D68275DB5CC00660F6E /* SeoulData.swift */,
-			);
-			path = Local;
-			sourceTree = "<group>";
-		};
 		B45A3D65275DB34700660F6E /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				BA000000000000000000DDD1 /* NetworkConfig.swift */,
 				B45C41C328B3162A009C46DB /* SeoulApi.swift */,
 			);
 			path = Remote;
@@ -290,10 +291,43 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		BA000000000000000000AAA1 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				BA000000000000000000AAA2 /* SeoulError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		BA000000000000000000BBB1 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				BA000000000000000000BBB2 /* SeoulRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		BA000000000000000000CCC1 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				BA000000000000000000CCC2 /* SeoulMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		BA000000000000000000EEE1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				BA000000000000000000EEE2 /* AppContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		B47D0BC027746CD700DD9C2C /* App */ = {
 			isa = PBXGroup;
 			children = (
 				B45A3D5B275DB23300660F6E /* Data */,
+				BA000000000000000000EEE1 /* DI */,
 				B45A3D5A275DB22E00660F6E /* Domain */,
 				B45A3D59275DB22000660F6E /* Presentation */,
 				B45A3D43275DAE1000660F6E /* AppDelegate.swift */,
@@ -423,11 +457,13 @@
 			files = (
 				B45A3D48275DAE1000660F6E /* MainViewController.swift in Sources */,
 				B41DE5DA298CE33200532603 /* SeoulDataSource.swift in Sources */,
-				B45A3D69275DB5CC00660F6E /* SeoulData.swift in Sources */,
 				B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */,
-				B45A3D6F275DB5F700660F6E /* SeoulTranslator.swift in Sources */,
 				B45A3D44275DAE1000660F6E /* AppDelegate.swift in Sources */,
-				B45C41C628B31706009C46DB /* SeoulRepository.swift in Sources */,
+				BA000000000000000000AAA3 /* SeoulError.swift in Sources */,
+				BA000000000000000000BBB3 /* SeoulRepository.swift in Sources */,
+				BA000000000000000000CCC3 /* SeoulMapper.swift in Sources */,
+				BA000000000000000000DDD2 /* NetworkConfig.swift in Sources */,
+				BA000000000000000000EEE3 /* AppContainer.swift in Sources */,
 				B45C41DD28B36F86009C46DB /* CulturalEventInfoResult.swift in Sources */,
 				B4150D9728BC992800934C3F /* Response.swift in Sources */,
 				B45C41DB28B36F6B009C46DB /* CulturalEventInfoResponse.swift in Sources */,
@@ -473,7 +509,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VQ7QN5M2A;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.peter.S206Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -495,7 +531,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VQ7QN5M2A;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.peter.S206Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,7 +597,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -619,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -631,6 +667,7 @@
 		};
 		B45A3D55275DAE1200660F6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA000000000000000000FFF1 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
@@ -638,7 +675,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K68T34XSW2;
 				INFOPLIST_FILE = "$(SRCROOT)/S206/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,6 +690,7 @@
 		};
 		B45A3D56275DAE1200660F6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA000000000000000000FFF1 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
@@ -660,7 +698,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K68T34XSW2;
 				INFOPLIST_FILE = "$(SRCROOT)/S206/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
