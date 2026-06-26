@@ -1,15 +1,13 @@
 //
-//  Result.swift
+//  Response.swift
 //  S206
 //
-//  Created by 박관웅 [parkkw09] on 2022/08/29.
+//  페이지 단위 문화행사 조회 결과. 서버 코드/메시지는 Data 레이어에서 처리하므로 도메인 모델에서 제거합니다.
 //
 
 import Foundation
 
-struct Response<T> {
-    let count: Int
-    let code: String
-    let message: String
-    let list: [T]
+struct CulturalEventPage {
+    let events: [CulturalEvent]
+    let totalCount: Int
 }

@@ -3,7 +3,7 @@
 현재 코드(HEAD `1d976fd`)에서 발견한 문제를 우선순위별로 정리합니다.
 **목표 설계는 [`architecture.md`](./architecture.md) 에 기록되어 있으며**, 여기에는 현재 코드가 그 목표에 도달하지 못한 **갭** 과 추가로 발견한 품질 이슈가 모두 포함됩니다.
 
-> 최신 갱신: 2026-04-22
+> 최신 갱신: 2026-06-26
 > 항목 ID 는 안정적으로 유지되며, 해결된 항목은 본 문서에서 제거하고 [`issues-resolved.md`](./issues-resolved.md) 로 이관합니다.
 > 과거 해결 기록은 항상 [`issues-resolved.md`](./issues-resolved.md) + [`CHANGELOG.md`](./CHANGELOG.md) 에서 확인할 수 있습니다.
 
@@ -21,20 +21,13 @@
 
 ## 🟡 Medium — 품질 / 이름
 
-### M-1. `regisrationDate` 오타
-- **위치**: `CulturalEvent.swift`, `NewCultureEvent.swift`, `SeoulTranslator.swift` (→ 이동 시 `SeoulMapper`)
-- 3개 파일 연쇄 rename 필요.
+> M-1 은 2026-06-26 라운드에 해결되어 [`issues-resolved.md`](./issues-resolved.md#m-1-regisrationdate-오타) 로 이관되었습니다.
 
 ### M-2. `SeoulData` (Local) 가 실질적으로 무용
 - 빈 배열 반환만 수행하는 스텁. 용도(캐시 / 목업 / 오프라인) 를 결정해 구현하거나 삭제.
 - 목표 설계에서도 Local 은 "필요해지면 추가" 로 열어둔 상태.
 
-### M-3. `SeoulApi` 의 `getCultureEventInfo1/2` 중복
-- 동일 로직, Alamofire 결과 추출 방식만 다른 두 구현. 하나로 정리 + 비교 예제는 주석/문서로.
-
-### M-4. API 경로/파라미터 하드코딩
-- `baseURL`, `dataType = "json"`, `command = "culturalEventInfo"`, `startIndex = 1, endIndex = 5` 가 모두 `SeoulApi` 내부 상수.
-- 목표 `NetworkConfig` 도입 시 같이 정리, 페이지네이션 준비.
+> M-3, M-4 는 2026-06-26 라운드에 해결되어 [`issues-resolved.md`](./issues-resolved.md#-medium) 로 이관되었습니다.
 
 ### M-5. `Localizable.strings` 가 현재 도메인과 완전히 무관
 - **위치**: `S206/Resources/{en,ko}.lproj/Localizable.strings`
@@ -87,11 +80,11 @@
 | --- | --- | --- | --- | --- |
 | 앱 동작 | — *(C-1, C-2, C-5 해결 — history 참조)* | — | — | — |
 | 테스트 | — *(C-3, C-4 해결 — history 참조)* | — | — | — |
-| 레이어/설계 | — | — *(H-1 ~ H-4 해결 — history 참조)* | M-2, M-3, M-4 | L-4 |
+| 레이어/설계 | — | — *(H-1 ~ H-4 해결 — history 참조)* | M-2 | L-4 |
 | 보안/설정 | — | — *(H-5, H-6 해결 — history 참조)* | — | L-2, ✅L-7 |
 | 빌드 설정 | — | — *(H-7 해결 — history 참조)* | — | — |
-| 네이밍/오타 | — | — *(H-2 에 통합, 해결됨)* | M-1 | L-5 |
+| 네이밍/오타 | — | — *(H-2 에 통합, 해결됨)* | — *(M-1 해결 — history 참조)* | L-5 |
 | 리소스 | — | — | M-5, M-6, M-7 | — |
 | 리포 위생 | — | — | — | L-1, L-3, L-6, L-8 |
 
-**상태 스냅샷 (2026-04-22)**: Critical 0건 / High 0건 (12건 전원 해결 → history 이관). 우선 진행은 **Medium (M-1 오타 rename, M-5 ~ M-7 리소스 정리)** 순.
+**상태 스냅샷 (2026-06-26)**: Critical 0건 / High 0건 / Medium M-1·M-3·M-4 해결 → 미해결 Medium M-2·M-5·M-6·M-7. 우선 진행은 **Medium (M-5 ~ M-7 리소스 정리, M-2 로컬 캐시)** 순.

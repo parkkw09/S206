@@ -3,7 +3,7 @@
 [`issues.md`](./issues.md) 에서 `✅ RESOLVED` 상태가 된 항목을 이동 보관합니다.
 항목 ID(`C-*` / `H-*` / `M-*` / `L-*`)는 안정적으로 유지되며, 삭제하지 않고 여기서 "원래 현상 + 해결 결과" 쌍으로 보존합니다.
 
-> 최신 갱신: 2026-04-22
+> 최신 갱신: 2026-06-26
 > 관련 코드 커밋/변경 상세는 `git log` 또는 [`CHANGELOG.md`](./CHANGELOG.md) 참조.
 
 ## 인덱스
@@ -22,6 +22,9 @@
 | H-5 | API 키가 리포지토리에 평문 저장 | 2026-04-22 | High 2차 라운드 |
 | H-6 | `NSAllowsArbitraryLoads = true` | 2026-04-22 | High 2차 라운드 |
 | H-7 | 배포 타겟(Deployment Target) 3중 불일치 | 2026-04-22 | High 2차 라운드 |
+| M-1 | `regisrationDate` 오타 | 2026-06-26 | mos 기조 정렬 라운드 |
+| M-3 | `SeoulApi` `getCultureEventInfo1/2` 중복 | 2026-06-26 | mos 기조 정렬 라운드 |
+| M-4 | API 파라미터 하드코딩 (`startIndex=1, endIndex=5`) | 2026-06-26 | mos 기조 정렬 라운드 |
 
 ## 🔴 Critical
 
@@ -151,5 +154,24 @@
   1. `issues.md` 에서 해당 블록을 제거하고
   2. 본 문서의 **인덱스 표 + 카테고리 섹션** 양쪽에 "원래 현상 + 해결" 형태로 추가한 뒤
   3. [`CHANGELOG.md`](./CHANGELOG.md) 에 한 줄 요약을 남깁니다.
-- 카테고리 섹션(🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low)은 필요해질 때 생성합니다. 현재는 Critical 만 존재합니다.
+- 카테고리 섹션(🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low)은 필요해질 때 생성합니다.
 - ID 는 재사용하지 않습니다. 삭제/중복 방지를 위해 이력은 항상 이 문서에 남깁니다.
+
+---
+
+## 🟡 Medium
+
+### M-1. `regisrationDate` 오타 — ✅ RESOLVED (2026-06-26)
+- **원래 현상**: `CulturalEvent.swift`(DTO), `NewCultureEvent.swift`(도메인), `SeoulMapper.swift` 3개 파일에 `regisrationDate` 오타가 잔재. JSON 키 `RGSTDATE` 와 매핑은 유지되고 있었으나 Swift 프로퍼티 이름이 잘못된 상태.
+- **해결**: 세 파일 모두 `registrationDate` 로 rename. JSON `CodingKey` 는 `"RGSTDATE"` 로 유지.
+- **관련 파일**: `S206/App/Data/Entities/CulturalEventInfo/CulturalEvent.swift`, `S206/App/Domain/Models/NewCultureEvent.swift`, `S206/App/Data/Mapper/SeoulMapper.swift`
+
+### M-3. `SeoulApi` `getCultureEventInfo1/2` 중복 — ✅ RESOLVED (2026-06-26)
+- **원래 현상**: 동일 로직에 Alamofire 결과 추출 방식만 다른 두 메서드가 공존.
+- **해결**: `getCultureInfo(startIndex:endIndex:)` 단일 메서드로 통합. 이전 비교 예제 코드는 git 이력으로 보존.
+- **관련 파일**: `S206/App/Data/Source/Remote/SeoulApi.swift`
+
+### M-4. API 파라미터 하드코딩 — ✅ RESOLVED (2026-06-26)
+- **원래 현상**: `startIndex = 1, endIndex = 5` 가 `SeoulApi` 내부 상수. 페이지네이션 불가능.
+- **해결**: `SeoulUsecase`, `SeoulRepository`, `SeoulApi` 프로토콜/구현체 전 계층에서 `startIndex`/`endIndex` 를 파라미터로 승격. `MainViewModel` 에서 `PAGE_SIZE = 50` 으로 제어.
+- **관련 파일**: `S206/App/Domain/Usecases/SeoulUsecase.swift`, `S206/App/Domain/Repositories/SeoulRepository.swift`, `S206/App/Data/Source/Remote/SeoulApi.swift`, `S206/App/Presentation/MainViewModel.swift`

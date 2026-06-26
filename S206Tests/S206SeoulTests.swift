@@ -3,7 +3,6 @@
 //  S206Tests
 //
 //  Mock DataSource 기반 단위 테스트.
-//  Domain → Repository(Protocol) → Mock 이 들어가는 클린 아키텍처 테스트 표준형.
 //
 
 import XCTest
@@ -22,8 +21,8 @@ private final class MockSeoulRemoteDataSource: SeoulRemoteDataSource {
         callCount += 1
         lastStartIndex = startIndex
         lastEndIndex = endIndex
-        if let stubbedError = stubbedError { throw stubbedError }
-        if let stubbedResponse = stubbedResponse { return stubbedResponse }
+        if let stubbedError { throw stubbedError }
+        if let stubbedResponse { return stubbedResponse }
         return CulturalEventInfoResponse()
     }
 }
@@ -34,10 +33,8 @@ private func makeSuccessResponse(
     code: String = SeoulMapper.successCode,
     message: String = "OK",
     count: Int = 1,
-    events: [CulturalEvent] = []
+    events: [CulturalEventDTO] = []
 ) -> CulturalEventInfoResponse {
-    // CulturalEventInfoResponse / CulturalEventInfo 는 내부적으로 Codable 기반 init 만 존재하므로
-    // JSON 을 돌려서 만드는 방식이 가장 단순합니다.
     let json: [String: Any] = [
         "culturalEventInfo": [
             "list_total_count": count,
@@ -52,16 +49,22 @@ private func makeSuccessResponse(
                     "ORG_NAME": event.orgName,
                     "USE_TRGT": event.useTarget,
                     "USE_FEE": event.useFee,
+                    "INQUIRY": event.inquiry,
                     "PLAYER": event.player,
                     "PROGRAM": event.program,
                     "ETC_DESC": event.etcDesc,
                     "ORG_LINK": event.orgLink,
                     "MAIN_IMG": event.mainImage,
-                    "RGSTDATE": event.regisrationDate,
+                    "RGSTDATE": event.registrationDate,
                     "TICKET": event.ticket,
                     "STRTDATE": event.startDate,
                     "END_DATE": event.endDate,
-                    "THEMECODE": event.themeCode
+                    "THEMECODE": event.themeCode,
+                    "LOT": event.lot,
+                    "LAT": event.lat,
+                    "IS_FREE": event.isFree,
+                    "HMPG_ADDR": event.homepageAddr,
+                    "PRO_TIME": event.proTime
                 ]
             }
         ]
@@ -84,8 +87,7 @@ final class SeoulRepositoryImplTests: XCTestCase {
         XCTAssertEqual(remote.callCount, 1)
         XCTAssertEqual(remote.lastStartIndex, 1)
         XCTAssertEqual(remote.lastEndIndex, 5)
-        XCTAssertEqual(result.code, SeoulMapper.successCode)
-        XCTAssertEqual(result.count, 2)
+        XCTAssertEqual(result.totalCount, 2)
     }
 
     func test_getCultureInfo_서버_실패코드면_server_에러를_던진다() async {
@@ -123,54 +125,51 @@ final class SeoulRepositoryImplTests: XCTestCase {
 final class SeoulUsecaseImplTests: XCTestCase {
 
     private final class StubRepository: SeoulRepository {
-        var stubbedResult: Result<Response<NewCultureEvent>, Error> = .success(
-            Response(count: 0, code: "INFO-000", message: "OK", list: [])
+        var stubbedResult: Result<CulturalEventPage, Error> = .success(
+            CulturalEventPage(events: [], totalCount: 0)
         )
         private(set) var lastStartIndex: Int?
         private(set) var lastEndIndex: Int?
 
-        func getCultureInfo(startIndex: Int, endIndex: Int) async throws -> Response<NewCultureEvent> {
+        func getCultureInfo(startIndex: Int, endIndex: Int) async throws -> CulturalEventPage {
             lastStartIndex = startIndex
             lastEndIndex = endIndex
             return try stubbedResult.get()
         }
     }
 
-    func test_getCultureInfo_기본_파라미터로_repository_호출() async throws {
+    func test_callAsFunction_파라미터를_repository에_그대로_전달한다() async throws {
         let repo = StubRepository()
         let sut = SeoulUsecaseImpl(repository: repo)
 
-        _ = try await sut.getCultureInfo()
+        _ = try await sut(startIndex: 1, endIndex: 5)
 
         XCTAssertEqual(repo.lastStartIndex, 1)
         XCTAssertEqual(repo.lastEndIndex, 5)
     }
 
-    func test_getCultureInfo_repository_결과를_그대로_반환() async throws {
+    func test_callAsFunction_repository_결과를_그대로_반환한다() async throws {
         let repo = StubRepository()
-        repo.stubbedResult = .success(
-            Response(count: 3, code: "INFO-000", message: "OK", list: [])
-        )
+        repo.stubbedResult = .success(CulturalEventPage(events: [], totalCount: 3))
         let sut = SeoulUsecaseImpl(repository: repo)
 
-        let result = try await sut.getCultureInfo()
+        let result = try await sut(startIndex: 1, endIndex: 50)
 
-        XCTAssertEqual(result.count, 3)
+        XCTAssertEqual(result.totalCount, 3)
     }
 }
 
 final class SeoulMapperTests: XCTestCase {
 
-    func test_toDomain_성공코드면_list_를_도메인으로_변환() throws {
+    func test_toDomain_성공코드면_이벤트_목록을_도메인으로_변환한다() throws {
         let dto = makeSuccessResponse(count: 1)
 
         let result = try SeoulMapper.toDomain(dto)
 
-        XCTAssertEqual(result.count, 1)
-        XCTAssertEqual(result.code, SeoulMapper.successCode)
+        XCTAssertEqual(result.totalCount, 1)
     }
 
-    func test_toDomain_실패코드면_server_에러() {
+    func test_toDomain_실패코드면_server_에러를_던진다() {
         let dto = makeSuccessResponse(code: "INFO-100", message: "no data")
 
         XCTAssertThrowsError(try SeoulMapper.toDomain(dto)) { error in

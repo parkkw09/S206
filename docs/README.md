@@ -1,7 +1,8 @@
 # S206 (Seoul Festival) 프로젝트 문서
 
 > 이 폴더는 S206 프로젝트의 구조, 현재 상태, 이슈, 향후 작업을 기록하기 위한 공간입니다.
-> 문서는 **목표 설계(architecture.md)** 와 **현재 코드 스냅샷(code-analysis.md)** 을 분리해 기록하고, 그 **갭** 을 `issues.md` / `TODO.md` 에서 추적합니다.
+> 현재 설계는 **[architecture.md](./architecture.md)** 에 기술하고, 남은 작업·이슈는 `issues.md` / `TODO.md` 에서 추적합니다.
+> (코드 자체가 현재 상태의 ground truth 이므로, 별도의 코드 스냅샷 문서는 두지 않습니다.)
 
 ## 개요
 
@@ -18,8 +19,7 @@
 
 | 문서 | 성격 | 내용 |
 | --- | --- | --- |
-| [architecture.md](./architecture.md) | **목표 설계** | 도달하고자 하는 Clean Architecture 구조·DI·에러 흐름 |
-| [code-analysis.md](./code-analysis.md) | **현재 스냅샷** | 실제 파일/타입/설정에 대한 상세 분석 |
+| [architecture.md](./architecture.md) | **설계** | Clean Architecture + MVVM 구조·DI·에러 흐름, mos↔S206 대응표 |
 | [issues.md](./issues.md) | **갭 분석** | 현재 코드의 **미해결** 버그·개선점 (우선순위별) |
 | [issues-resolved.md](./issues-resolved.md) | **히스토리** | 해결된 이슈의 "원래 현상 + 해결" 보존 기록 |
 | [TODO.md](./TODO.md) | 작업 계획 | 이슈를 Phase 별 작업으로 묶은 체크리스트 |
@@ -27,26 +27,30 @@
 
 ## 현재 vs 목표 — 한눈에 보기
 
-2026-04-22 기준, Critical(C-1 ~ C-5) + High(H-1 ~ H-7) 전부 해결되어 아래 항목은 모두 목표 상태입니다.
+2026-06-26 기준, Critical(C-1~C-5) + High(H-1~H-7) + Medium(M-1·M-3·M-4) 전부 해결되어 아래 항목은 모두 목표 상태입니다.
 상세 이력은 [`issues-resolved.md`](./issues-resolved.md) 참조.
 
-| 항목 | 현재 코드 | 목표 (`architecture.md`) | 상태 |
+| 항목 | 현재 코드 | 목표 | 상태 |
 | --- | --- | --- | --- |
 | Composition Root | `DI/AppContainer` (Swinject) | `DI/AppContainer` | 🟢 일치 |
+| MVVM | `MainViewModel` (Combine `@Published`) | MVVM | 🟢 일치 |
+| UI 상태 | `LoadState` enum (idle/loading/loadingMore/success/error) | LoadState | 🟢 일치 |
+| 페이지네이션 | PAGE_SIZE=50, `loadNextPage()`, 무한스크롤 | 페이지네이션 | 🟢 일치 |
+| 도메인 모델 필드 수 | `CulturalEvent` 24필드 | mos 대응 24필드 | 🟢 일치 |
+| 페이지 타입 | `CulturalEventPage(events:totalCount:)` | mos 대응 | 🟢 일치 |
+| UseCase 호출 방식 | `callAsFunction(startIndex:endIndex:)` | mos `operator fun invoke` 대응 | 🟢 일치 |
 | `SeoulRepository` 위치 | Domain | Domain | 🟢 일치 |
-| `SeoulError` 위치 | `Domain/Errors/SeoulError.swift` | `Domain/Errors/SeoulError.swift` | 🟢 일치 |
-| 에러 케이스 | `network / decoding / server / missingConfiguration / unknown` | 동일 | 🟢 일치 |
-| DTO→Domain 변환 | `Data/Mapper/SeoulMapper` (+성공코드 검증) | 동일 | 🟢 일치 |
-| 네트워크 설정 | `NetworkConfig` 주입 | `NetworkConfig` 주입 | 🟢 일치 |
-| 성공 코드 | `SeoulMapper.successCode = "INFO-000"` | 동일 | 🟢 일치 |
-| Repository 초기화 | `init(remote:)` (non-optional) | 동일 | 🟢 일치 |
-| UseCase 초기화 | `init(repository:)` (non-optional) | 동일 | 🟢 일치 |
-| `MainViewController` 주입 | `configure(usecase:)` setter | 동일 | 🟢 일치 |
-| 실제 API 호출 동작 | ✅ | ✅ | 🟢 일치 |
-| 테스트 빌드 가능 여부 | ✅ (`build-for-testing` 통과, async 검증 포함) | ✅ | 🟢 일치 |
-| API 키 관리 | `Config/Secrets.xcconfig` (`.gitignore`) + `Info.plist $(SEOUL_KEY)` | xcconfig 분리 | 🟢 일치 |
-| ATS | `NSExceptionDomains.openapi.seoul.go.kr` (subdomains) | 동일 | 🟢 일치 |
+| `SeoulError` 위치 | `Domain/Errors/SeoulError.swift` | 동일 | 🟢 일치 |
+| DTO→Domain 변환 | `SeoulMapper` (성공코드 검증 포함) | 동일 | 🟢 일치 |
+| 네트워크 설정 | `NetworkConfig` 주입 | 동일 | 🟢 일치 |
+| API 키 관리 | `Config/Secrets.xcconfig` + `Info.plist $(SEOUL_KEY)` | xcconfig 분리 | 🟢 일치 |
+| ATS | `NSExceptionDomains.openapi.seoul.go.kr` | 동일 | 🟢 일치 |
 | 배포 타겟 | iOS 15.0 (Project/App/Tests 통일) | 단일 값 | 🟢 일치 |
+| 테스트 빌드 | ✅ `build-for-testing` 통과 | ✅ | 🟢 일치 |
+| `Localizable.strings` | 이전 프로젝트 잔재 (책/북마크 키) | 문화행사 키 | 🔴 미완 |
+| `Images.xcassets` | 이전 프로젝트 잔재 | 실제 에셋 | 🔴 미완 |
+| `Colors.xcassets` | 미사용 팔레트 | 사용 여부 결정 필요 | 🟡 보류 |
+| 로컬 캐시 | 없음 | CoreData/SwiftData (mos Room 대응) | 🟡 보류 |
 
 ## 실행 방법
 
@@ -92,4 +96,5 @@ Mock 기반이므로 네트워크 없이도 실행됩니다.
 2. ~~Phase 2 — 레이어 재배치~~ ✅ 완료
 3. ~~Phase 3 — 테스트 복구~~ ✅ 완료 (CI 자동화만 잔여)
 4. ~~Phase 4 — 보안/설정 정리 (H-5, H-6, H-7)~~ ✅ 완료 (README 키 가이드 + git 히스토리 정리만 잔여)
-5. **Phase 5 — 리소스 정리 & 기능 확장** (`Localizable.strings`/`Images.xcassets` 재작성, M-1 ~ M-7, 페이지네이션, 상세 화면 등) ← **다음 진행**
+5. ~~Phase 5-A — mos 기조 정렬~~ ✅ 완료 (MVVM + LoadState + 24필드 + 페이지네이션 + callAsFunction)
+6. **Phase 5-B — 리소스 정리 & 기능 확장** (`Localizable.strings`/`Images.xcassets` 재작성, 상세 화면, 로컬 캐시 등) ← **다음 진행**

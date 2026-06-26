@@ -4,72 +4,88 @@
 //
 
 import UIKit
+import Combine
 
 final class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    // Storyboard 로 생성되므로 주입 시점은 `init` 이후(= SceneDelegate) 입니다.
-    // 그래서 한 번만 설정되는 것을 의도하여 private(set) let 처럼 다루되, 프로퍼티 주입을 위해 옵셔널로 둡니다.
-    private var usecase: SeoulUsecase?
-    private var items: [NewCultureEvent] = []
+    private var viewModel: MainViewModel?
+    private var cancellables: Set<AnyCancellable> = []
 
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var myLabel: UILabel!
 
     // MARK: - DI
 
-    /// `AppContainer` 가 viewDidLoad 이전에 한 번 호출합니다.
-    func configure(usecase: SeoulUsecase) {
-        assert(self.usecase == nil, "configure(usecase:) 는 한 번만 호출되어야 합니다.")
-        self.usecase = usecase
+    func configure(viewModel: MainViewModel) {
+        assert(self.viewModel == nil, "configure(viewModel:) 는 한 번만 호출되어야 합니다.")
+        self.viewModel = viewModel
     }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myLabel.text = "Loading..."
         myTableView.delegate = self
         myTableView.dataSource = self
+        bindViewModel()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchCultureInfo()
+        viewModel?.initialize()
     }
 
-    // MARK: - Data loading
+    // MARK: - Binding
 
-    private func fetchCultureInfo() {
-        guard let usecase = usecase else {
-            assertionFailure("SeoulUsecase 가 주입되지 않았습니다. AppContainer 등록을 확인하세요.")
-            return
-        }
+    private func bindViewModel() {
+        guard let viewModel else { return }
 
-        Task { [weak self] in
-            do {
-                let response = try await usecase.getCultureInfo()
-                await MainActor.run { [weak self] in
-                    self?.items = response.list
-                    self?.myLabel.text = "문화 행사 \(response.count)건"
-                    self?.myTableView.reloadData()
-                }
-            } catch {
-                await MainActor.run { [weak self] in
-                    self?.myLabel.text = "Error: \(error.localizedDescription)"
-                }
+        viewModel.$events
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.myTableView.reloadData()
             }
+            .store(in: &cancellables)
+
+        viewModel.$loadState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                self?.applyLoadState(state)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func applyLoadState(_ state: LoadState) {
+        switch state {
+        case .idle:
+            break
+        case .loading:
+            myLabel.text = "Loading..."
+        case .loadingMore:
+            break
+        case .success:
+            myLabel.text = "문화 행사 \(viewModel?.events.count ?? 0)건"
+        case .error(let message):
+            myLabel.text = "Error: \(message)"
         }
     }
 
     // MARK: - UITableView
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        viewModel?.events.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myTableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
+        cell.textLabel?.text = viewModel?.events[indexPath.row].title
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let viewModel, viewModel.events.count > 10 else { return }
+        if indexPath.row >= viewModel.events.count - 10 {
+            viewModel.loadNextPage()
+        }
     }
 }

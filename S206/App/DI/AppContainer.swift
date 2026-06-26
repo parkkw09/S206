@@ -20,7 +20,6 @@ final class AppContainer {
     private func registerDependencies() {
         // Infrastructure
         container.register(NetworkConfig.self) { _ in
-            // 부팅 시 1회 로드. 실패 시 fatal: Info.plist 에 SEOUL_KEY 가 없으면 앱이 정상 동작 불가능한 상태.
             do {
                 return try NetworkConfig.fromBundle()
             } catch {
@@ -44,16 +43,20 @@ final class AppContainer {
             let repository = resolver.resolve(SeoulRepository.self)!
             return SeoulUsecaseImpl(repository: repository)
         }.inObjectScope(.container)
+
+        // Presentation layer
+        container.register(MainViewModel.self) { resolver in
+            let usecase = resolver.resolve(SeoulUsecase.self)!
+            return MainViewModel(usecase: usecase)
+        }.inObjectScope(.container)
     }
 
     // MARK: - Presentation wiring
 
-    /// Storyboard 로 만들어진 `MainViewController` 에 의존성을 주입합니다.
-    /// Storyboard 기반 VC 는 `init(coder:)` 로 생성되므로 프로퍼티 주입이 필요합니다.
     func inject(into viewController: MainViewController) {
-        guard let usecase = container.resolve(SeoulUsecase.self) else {
-            fatalError("SeoulUsecase 를 resolve 하지 못했습니다. AppContainer 등록을 확인하세요.")
+        guard let viewModel = container.resolve(MainViewModel.self) else {
+            fatalError("MainViewModel 을 resolve 하지 못했습니다. AppContainer 등록을 확인하세요.")
         }
-        viewController.configure(usecase: usecase)
+        viewController.configure(viewModel: viewModel)
     }
 }

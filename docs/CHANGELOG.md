@@ -3,6 +3,32 @@
 이 문서는 `docs/` 폴더 자체의 변경 이력을 추적합니다.
 코드 변경 이력은 `git log` 를 참고하세요.
 
+## 2026-06-26 — mos 기조 정렬 (Phase 5-A) 완료
+
+**참조 프로젝트**: 안드로이드 대응 앱 `mos` (같은 서울 문화행사 API, Kotlin + Hilt + Compose)의 아키텍처 기조를 iOS S206 에 이식.
+
+- **코드**
+  - **(M-1)** `regisrationDate` → `registrationDate` rename (DTO, 도메인 모델, Mapper 3파일).
+  - **(M-3)** `getCultureEventInfo1/2` → `getCultureInfo(startIndex:endIndex:)` 단일 메서드 통합.
+  - **(M-4)** `startIndex=1, endIndex=5` 하드코딩 → 전 레이어 파라미터 승격.
+  - **모델 완성**: `CulturalEventDTO` / `CulturalEvent` 18→24 필드 (`inquiry`, `lot`, `lat`, `isFree`, `homepageAddr`, `proTime` 추가). mos 의 `CulturalEventInfoData` / `CulturalEvent` 와 완전 일치.
+  - **DTO 리네임**: `CulturalEvent`(DTO) → `CulturalEventDTO`, `NewCultureEvent`(도메인) → `CulturalEvent`.
+  - **페이지 타입 교체**: `Response<T>` → `CulturalEventPage(events:[CulturalEvent], totalCount:Int)`. 서버 코드/메시지를 도메인에서 제거 (Data 레이어 책임으로 격리).
+  - **UseCase 패턴**: `getCultureInfo(startIndex:endIndex:)` → `callAsFunction(startIndex:endIndex:)` (mos `operator fun invoke` 대응. `try await usecase(startIndex:endIndex:)` 로 호출 가능).
+  - **LoadState** `enum LoadState` 신규 (`idle / loading / loadingMore / success / error(String)`). mos `sealed interface LoadState` 와 동일 구조.
+  - **MVVM 도입**: `MainViewModel` 신규 작성. Combine `@Published`, `PAGE_SIZE=50`, `initialize()` / `loadNextPage()` / `refresh()`. mos `MainViewModel` (StateFlow, PAGE_SIZE=50) 과 동일 기조.
+  - **MainViewController** 개선: UseCase 직접 호출 제거. `MainViewModel` Combine 바인딩(`$events`, `$loadState`), `tableView(_:willDisplay:forRowAt:)` 무한스크롤 트리거.
+  - **AppContainer** 갱신: `MainViewModel` 등록, `inject(into:)` 가 `MainViewModel` 을 주입하도록 변경.
+  - **테스트** 전면 갱신: `CulturalEventDTO`, `CulturalEventPage`, `callAsFunction` 기반 재작성. 파라미터 스파이 검증 메서드명 한국어로 정비.
+  - 검증: `xcodebuild -project S206.xcodeproj -scheme S206 -destination 'generic/platform=iOS Simulator' build-for-testing` → `** TEST BUILD SUCCEEDED **`.
+- **문서**
+  - `issues-resolved.md` — M-1, M-3, M-4 이관, `🟡 Medium` 섹션 신설.
+  - `issues.md` — M-1·M-3·M-4 블록 제거 및 history 이관 안내. 요약 표 갱신 (2026-06-26 스냅샷).
+  - `TODO.md` — Phase 5-A (mos 기조 정렬) 섹션 추가 및 전원 체크. Phase 5 → 5-B 로 분리.
+  - `architecture.md` — MVVM 도입, `MainViewModel` / `LoadState` / `CulturalEventPage` 반영.
+  - `code-analysis.md` **삭제** — 리팩토링 전 broken 상태의 스냅샷이라 전면 구식화. 현재 설계는 `architecture.md`, 현재 코드는 소스 자체가 ground truth 이므로 별도 스냅샷 문서를 유지하지 않기로 결정. `README.md` 의 문서 인덱스·서두에서 참조 제거.
+  - `CHANGELOG.md` — 본 엔트리 추가.
+
 ## 2026-04-22 — High 시리즈(H-1 ~ H-7) 전원 해결 & history 이관
 
 - **코드/설정**

@@ -2,9 +2,6 @@
 //  SeoulUsecaseImpl.swift
 //  S206
 //
-//  Domain 은 Repository(Domain) 외의 것은 알지 않습니다.
-//  매핑과 서버 응답 코드 검증은 Data 레이어로 이동했습니다.
-//
 
 import Foundation
 
@@ -16,7 +13,7 @@ final class SeoulUsecaseImpl: SeoulUsecase {
         self.repository = repository
     }
 
-    func getCultureInfo(startIndex: Int, endIndex: Int) async throws -> Response<NewCultureEvent> {
+    func callAsFunction(startIndex: Int, endIndex: Int) async throws -> CulturalEventPage {
         try await repository.getCultureInfo(startIndex: startIndex, endIndex: endIndex)
     }
 }

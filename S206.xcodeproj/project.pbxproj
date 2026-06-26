@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1B1B1B1B1B1B1B1B1B1B1B /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */; };
+		CC2B2B2B2B2B2B2B2B2B2B2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */; };
 		B4150D9228BC94B400934C3F /* SeoulUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9128BC94B400934C3F /* SeoulUsecase.swift */; };
 		B4150D9528BC94D800934C3F /* SeoulUsecaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */; };
 		B4150D9728BC992800934C3F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9628BC992800934C3F /* Response.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0A612479289CFE6300B02DEE /* S206Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = S206Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4150D9128BC94B400934C3F /* SeoulUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulUsecase.swift; sourceTree = "<group>"; };
 		B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulUsecaseImpl.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 		B45A3D59275DB22000660F6E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */,
+				CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */,
 				B45A3D5C275DB23900660F6E /* View */,
 			);
 			path = Presentation;
@@ -455,6 +461,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC1B1B1B1B1B1B1B1B1B1B1B /* LoadState.swift in Sources */,
+				CC2B2B2B2B2B2B2B2B2B2B2B /* MainViewModel.swift in Sources */,
 				B45A3D48275DAE1000660F6E /* MainViewController.swift in Sources */,
 				B41DE5DA298CE33200532603 /* SeoulDataSource.swift in Sources */,
 				B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */,

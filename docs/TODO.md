@@ -95,15 +95,38 @@
 - [ ] **(L-5)** `SeoulData.swift` 의 파일 헤더 주석(`S206Local.swift`) 수정 — 이미 `SeoulData.swift` 파일은 삭제됨(M-2 와 함께 정리), 확인 후 체크
 - [ ] **(L-6)** `SceneDelegate.appDelegate` 프로퍼티 제거 또는 사용처 명확화
 
-## Phase 5 — 리소스 정리 & 기능 확장
+## Phase 5-A — mos 기조 정렬 (MVVM + 모델 완성) ✅ 완료 (2026-06-26)
+
+안드로이드 대응 프로젝트(mos)의 아키텍처 기조를 iOS 쪽에 맞게 이식한 작업입니다.
+
+- [x] **(M-1)** `regisrationDate` → `registrationDate` rename (CulturalEvent.swift, NewCultureEvent.swift, SeoulMapper.swift)
+- [x] **(M-3)** `SeoulApi` `getCultureEventInfo1/2` → `getCultureInfo(startIndex:endIndex:)` 단일 메서드로 통합
+- [x] **(M-4)** `startIndex`/`endIndex` 하드코딩 → 전 레이어 파라미터 승격
+- [x] 도메인 모델 18필드 → **24필드 완성** (`inquiry`, `lot`, `lat`, `isFree`, `homepageAddr`, `proTime` 추가)
+- [x] DTO `CulturalEvent` → `CulturalEventDTO` 리네임 (도메인 모델 `CulturalEvent` 와 이름 충돌 해소)
+- [x] 도메인 모델 `NewCultureEvent` → `CulturalEvent` 리네임 (mos 와 동일 이름)
+- [x] `Response<T>` → `CulturalEventPage(events:totalCount:)` 교체 — 서버 코드/메시지를 도메인 모델에서 제거
+- [x] `SeoulUsecase` 프로토콜 → `callAsFunction(startIndex:endIndex:)` 패턴 (mos `operator fun invoke` 대응)
+- [x] `LoadState` sealed enum 신규 작성 (`idle / loading / loadingMore / success / error(String)`)
+- [x] `MainViewModel` 신규 작성 — Combine `@Published`, `PAGE_SIZE=50`, `initialize()` / `loadNextPage()` / `refresh()`
+- [x] `MainViewController` → UseCase 직접 호출 제거, `MainViewModel` Combine 바인딩 + `willDisplay` 무한스크롤
+- [x] `AppContainer` — `MainViewModel` 등록 및 `inject(into:)` 갱신
+- [x] 테스트 전면 갱신 — `CulturalEventDTO`, `CulturalEventPage`, `callAsFunction` 기반으로 재작성
+- [x] `xcodebuild build-for-testing` → `** TEST BUILD SUCCEEDED **`
+
+### 완료 기준 — 달성
+- mos 의 핵심 레이어 구조(ViewModel → UseCase → Repository)와 LoadState 상태 기계가 iOS 코드에 이식됨.
+- 24필드 모델이 mos 와 완전히 일치.
+- 페이지네이션 파이프라인(PAGE_SIZE=50) 이 동작 준비 상태.
+
+## Phase 5-B — 리소스 정리 & 기능 확장
 
 - [ ] **(M-5)** `Localizable.strings` (en/ko) 재작성
   - `app_name, event_list_title, loading, error_network, error_server, retry, …` 등 현 도메인 맞춤 키로 교체
 - [ ] **(M-6)** `Images.xcassets` 정리 — 사용 안 하는 book/bookmark/history/… 에셋 제거 후 실제 필요 에셋 추가
 - [ ] **(M-7)** `Colors.xcassets` 사용 여부 결정 (디자인 팔레트 확정 or 제거)
-- [ ] **(M-2)** `SeoulData` (Local) 의 역할 결정 — 캐시 구현 or 삭제
-- [ ] **(L-4)** `Response<T>` 이름 구체화 (예: `EventListResponse<T>`)
-- [ ] 페이지네이션 (현재는 1~5 고정 → Phase 2 의 파라미터화 후 UI 연동)
+- [ ] **(M-2)** `SeoulData` (Local) 의 역할 결정 — 캐시 구현 or 삭제 (mos 는 Room + Remote-First Fallback)
+- [x] **(L-4)** `Response<T>` 이름 구체화 → `CulturalEventPage` 로 해결됨 (Phase 5-A 에서 완료)
 - [ ] 상세 화면 (행사 클릭 시 이미지/설명/링크)
 - [ ] `mainImage` 로딩 (Kingfisher 등)
 - [ ] 검색/필터 (자치구, 테마 코드)

@@ -10,7 +10,7 @@ import Foundation
 struct CulturalEventInfo: Codable {
     let count: Int
     let result: CulturalEventInfoResult
-    let list: [CulturalEvent]
+    let list: [CulturalEventDTO]
 
     enum CodingKeys: String, CodingKey {
         case count = "list_total_count"
@@ -28,6 +28,6 @@ struct CulturalEventInfo: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         count = (try? values.decodeIfPresent(Int.self, forKey: CodingKeys.count)) ?? 0
         result = (try? values.decodeIfPresent(CulturalEventInfoResult.self, forKey: CodingKeys.result)) ?? CulturalEventInfoResult()
-        list = (try? values.decodeIfPresent([CulturalEvent].self, forKey: CodingKeys.list)) ?? []
+        list = (try? values.decodeIfPresent([CulturalEventDTO].self, forKey: CodingKeys.list)) ?? []
     }
 }
