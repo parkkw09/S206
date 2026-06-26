@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import AuthenticationServices
 
 final class AppContainer {
 
@@ -44,11 +45,78 @@ final class AppContainer {
             return SeoulUsecaseImpl(repository: repository)
         }.inObjectScope(.container)
 
+        registerGoogleDependencies()
+
         // Presentation layer
         container.register(MainViewModel.self) { resolver in
-            let usecase = resolver.resolve(SeoulUsecase.self)!
-            return MainViewModel(usecase: usecase)
+            MainViewModel(
+                usecase: resolver.resolve(SeoulUsecase.self)!,
+                saveGoogleTokenUseCase: resolver.resolve(SaveGoogleTokenUseCase.self)!,
+                clearGoogleTokenUseCase: resolver.resolve(ClearGoogleTokenUseCase.self)!
+            )
         }.inObjectScope(.container)
+    }
+
+    // MARK: - Google / YouTube
+
+    private func registerGoogleDependencies() {
+        // Infrastructure
+        // 토큰 저장/삭제 경로는 GoogleConfig 가 없어도 동작해야 하므로(앱 부팅 차단 방지),
+        // GOOGLE_CLIENT_ID 미설정 시 fatalError 대신 빈 clientId fallback 으로 둡니다.
+        // 실제 로그인/API 호출 시점에 GoogleError 로 사유가 표면화됩니다.
+        container.register(GoogleConfig.self) { _ in
+            (try? GoogleConfig.fromBundle()) ?? GoogleConfig(
+                apiBaseURL: URL(string: "https://www.googleapis.com")!,
+                clientId: "",
+                scope: "https://www.googleapis.com/auth/youtube.readonly"
+            )
+        }.inObjectScope(.container)
+
+        container.register(TokenStore.self) { _ in
+            UserDefaultsTokenStore()
+        }.inObjectScope(.container)
+
+        // Data layer
+        container.register(GoogleRemoteDataSource.self) { resolver in
+            GoogleApi(
+                config: resolver.resolve(GoogleConfig.self)!,
+                tokenStore: resolver.resolve(TokenStore.self)!
+            )
+        }.inObjectScope(.container)
+
+        container.register(GoogleRepository.self) { resolver in
+            GoogleRepositoryImpl(
+                remote: resolver.resolve(GoogleRemoteDataSource.self)!,
+                tokenStore: resolver.resolve(TokenStore.self)!
+            )
+        }.inObjectScope(.container)
+
+        // Domain layer — YouTube UseCases
+        container.register(GetSubscriptionsUseCase.self) { r in
+            GetSubscriptionsUseCaseImpl(repository: r.resolve(GoogleRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(GetPlaylistUseCase.self) { r in
+            GetPlaylistUseCaseImpl(repository: r.resolve(GoogleRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(GetContentDetailUseCase.self) { r in
+            GetContentDetailUseCaseImpl(repository: r.resolve(GoogleRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(SaveGoogleTokenUseCase.self) { r in
+            SaveGoogleTokenUseCaseImpl(repository: r.resolve(GoogleRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(ClearGoogleTokenUseCase.self) { r in
+            ClearGoogleTokenUseCaseImpl(repository: r.resolve(GoogleRepository.self)!)
+        }.inObjectScope(.container)
+    }
+
+    // MARK: - Google sign-in (presentation-time wiring)
+
+    /// `GoogleSignInManager` 는 표시 컨텍스트(UIWindow) 가 필요하므로 View 시점에 생성합니다.
+    func makeGoogleSignInManager(anchorProvider: @escaping () -> ASPresentationAnchor) -> GoogleSignInManaging {
+        GoogleSignInManager(
+            config: container.resolve(GoogleConfig.self)!,
+            anchorProvider: anchorProvider
+        )
     }
 
     // MARK: - Presentation wiring
@@ -57,6 +125,18 @@ final class AppContainer {
         guard let viewModel = container.resolve(MainViewModel.self) else {
             fatalError("MainViewModel 을 resolve 하지 못했습니다. AppContainer 등록을 확인하세요.")
         }
-        viewController.configure(viewModel: viewModel)
+        viewController.configure(
+            viewModel: viewModel,
+            signInManagerFactory: { [weak self] anchorProvider in
+                guard let self else {
+                    return GoogleSignInManager(
+                        config: GoogleConfig(apiBaseURL: URL(string: "https://www.googleapis.com")!,
+                                             clientId: "", scope: ""),
+                        anchorProvider: anchorProvider
+                    )
+                }
+                return self.makeGoogleSignInManager(anchorProvider: anchorProvider)
+            }
+        )
     }
 }

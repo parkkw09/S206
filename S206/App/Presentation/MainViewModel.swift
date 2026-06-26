@@ -16,14 +16,21 @@ final class MainViewModel: ObservableObject {
 
     @Published private(set) var events: [CulturalEvent] = []
     @Published private(set) var loadState: LoadState = .idle
+    @Published private(set) var googleAuthState: GoogleAuthState = .unauthenticated
 
     private let usecase: SeoulUsecase
+    private let saveGoogleTokenUseCase: SaveGoogleTokenUseCase
+    private let clearGoogleTokenUseCase: ClearGoogleTokenUseCase
     private var totalCount = 0
     private var nextStart = 1
     private var isLoading = false
 
-    init(usecase: SeoulUsecase) {
+    init(usecase: SeoulUsecase,
+         saveGoogleTokenUseCase: SaveGoogleTokenUseCase,
+         clearGoogleTokenUseCase: ClearGoogleTokenUseCase) {
         self.usecase = usecase
+        self.saveGoogleTokenUseCase = saveGoogleTokenUseCase
+        self.clearGoogleTokenUseCase = clearGoogleTokenUseCase
     }
 
     func initialize() {
@@ -63,5 +70,31 @@ final class MainViewModel: ObservableObject {
         nextStart = 1
         isLoading = false
         loadNextPage()
+    }
+
+    // MARK: - Google auth (mos MainViewModel 의 Google 인증 처리에 대응)
+
+    func onGoogleSignInStarted() {
+        googleAuthState = .authenticating
+    }
+
+    func onGoogleSignInSuccess(token: String) {
+        Task { [weak self] in
+            guard let self else { return }
+            await saveGoogleTokenUseCase(token)
+            await MainActor.run { self.googleAuthState = .authenticated }
+        }
+    }
+
+    func onGoogleSignInError(message: String) {
+        googleAuthState = .error(message)
+    }
+
+    func signOut() {
+        Task { [weak self] in
+            guard let self else { return }
+            await clearGoogleTokenUseCase()
+            await MainActor.run { self.googleAuthState = .unauthenticated }
+        }
     }
 }

@@ -5,20 +5,30 @@
 
 import UIKit
 import Combine
+import AuthenticationServices
 
 final class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private var viewModel: MainViewModel?
     private var cancellables: Set<AnyCancellable> = []
 
+    /// 표시 컨텍스트(UIWindow)가 필요한 시점에 `GoogleSignInManager` 를 생성하는 팩토리.
+    private var signInManagerFactory: ((@escaping () -> ASPresentationAnchor) -> GoogleSignInManaging)?
+    private var signInManager: GoogleSignInManaging?
+    private var didStartGoogleSignIn = false
+
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var myLabel: UILabel!
 
     // MARK: - DI
 
-    func configure(viewModel: MainViewModel) {
-        assert(self.viewModel == nil, "configure(viewModel:) 는 한 번만 호출되어야 합니다.")
+    func configure(
+        viewModel: MainViewModel,
+        signInManagerFactory: @escaping (@escaping () -> ASPresentationAnchor) -> GoogleSignInManaging
+    ) {
+        assert(self.viewModel == nil, "configure 는 한 번만 호출되어야 합니다.")
         self.viewModel = viewModel
+        self.signInManagerFactory = signInManagerFactory
     }
 
     // MARK: - Lifecycle
@@ -33,6 +43,7 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel?.initialize()
+        startGoogleSignInIfNeeded()
     }
 
     // MARK: - Binding
@@ -53,6 +64,45 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
                 self?.applyLoadState(state)
             }
             .store(in: &cancellables)
+
+        viewModel.$googleAuthState
+            .receive(on: DispatchQueue.main)
+            .sink { state in
+                // mos MainActivity.observeGoogleAuthState 대응 (Toast → 로그).
+                switch state {
+                case .authenticated:
+                    print("[Google] 로그인 성공")
+                case .error(let message):
+                    print("[Google] 로그인 실패: \(message)")
+                default:
+                    break
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    // MARK: - Google sign-in (mos MainActivity.startGoogleSignIn 대응)
+
+    private func startGoogleSignInIfNeeded() {
+        guard !didStartGoogleSignIn,
+              let viewModel,
+              let factory = signInManagerFactory else { return }
+        didStartGoogleSignIn = true
+
+        let manager = factory { [weak self] in
+            self?.view.window ?? ASPresentationAnchor()
+        }
+        signInManager = manager
+
+        viewModel.onGoogleSignInStarted()
+        Task { @MainActor in
+            do {
+                let token = try await manager.signIn()
+                viewModel.onGoogleSignInSuccess(token: token)
+            } catch {
+                viewModel.onGoogleSignInError(message: error.localizedDescription)
+            }
+        }
     }
 
     private func applyLoadState(_ state: LoadState) {

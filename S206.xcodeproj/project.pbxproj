@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC1B1B1B1B1B1B1B1B1B1B1B /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */; };
-		CC2B2B2B2B2B2B2B2B2B2B2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */; };
+		19C197841A84F325DC602E19 /* GoogleAuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D226EF1F469A80F216BECA82 /* GoogleAuthInterceptor.swift */; };
+		1DEDCF5947EAFA21B2D27BF2 /* GoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883486DB8F53CF780548C22 /* GoogleSignInManager.swift */; };
+		40B787E9E2C8E8F6CAFABCA7 /* GoogleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0FB3A28EB4F965E0B4532B /* GoogleConfig.swift */; };
+		4497ACF899EA6154FDF3B9E1 /* GoogleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4AF4757E8B08556242B9B /* GoogleMapper.swift */; };
+		931021ADC8E39173A2EEE966 /* YoutubeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B81C34696E674C17DD095 /* YoutubeModels.swift */; };
+		A244F1D05BFEA42690CFFDB1 /* GoogleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC096A92B0CD7684685E32E /* GoogleDataSource.swift */; };
+		B21755B42CD872FE310DC239 /* GoogleRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3DFE521789C4FA1562ED7 /* GoogleRepositoryImpl.swift */; };
 		B4150D9228BC94B400934C3F /* SeoulUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9128BC94B400934C3F /* SeoulUsecase.swift */; };
 		B4150D9528BC94D800934C3F /* SeoulUsecaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */; };
 		B4150D9728BC992800934C3F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4150D9628BC992800934C3F /* Response.swift */; };
@@ -19,11 +24,6 @@
 		B45A3D71275DB60200660F6E /* NewCultureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A3D70275DB60200660F6E /* NewCultureEvent.swift */; };
 		B45C41C428B3162A009C46DB /* SeoulApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C328B3162A009C46DB /* SeoulApi.swift */; };
 		B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */; };
-		BA000000000000000000AAA3 /* SeoulError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000AAA2 /* SeoulError.swift */; };
-		BA000000000000000000BBB3 /* SeoulRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000BBB2 /* SeoulRepository.swift */; };
-		BA000000000000000000CCC3 /* SeoulMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000CCC2 /* SeoulMapper.swift */; };
-		BA000000000000000000DDD2 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000DDD1 /* NetworkConfig.swift */; };
-		BA000000000000000000EEE3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000EEE2 /* AppContainer.swift */; };
 		B45C41CA28B3182B009C46DB /* S206SeoulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41C928B3182B009C46DB /* S206SeoulTests.swift */; };
 		B45C41D628B33D95009C46DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B45C41D528B33D95009C46DB /* Alamofire */; };
 		B45C41D828B36A34009C46DB /* CulturalEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */; };
@@ -35,7 +35,21 @@
 		B47D0BBA27746C5200DD9C2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BB927746C5200DD9C2C /* LaunchScreen.storyboard */; };
 		B47D0BBC27746C6300DD9C2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BBB27746C6300DD9C2C /* Main.storyboard */; };
 		B47D0BC327746D1A00DD9C2C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B47D0BC527746D1A00DD9C2C /* Localizable.strings */; };
+		BA000000000000000000AAA3 /* SeoulError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000AAA2 /* SeoulError.swift */; };
+		BA000000000000000000BBB3 /* SeoulRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000BBB2 /* SeoulRepository.swift */; };
+		BA000000000000000000CCC3 /* SeoulMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000CCC2 /* SeoulMapper.swift */; };
+		BA000000000000000000DDD2 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000DDD1 /* NetworkConfig.swift */; };
+		BA000000000000000000EEE3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA000000000000000000EEE2 /* AppContainer.swift */; };
+		BEA456115F8C6D922DB293F5 /* GoogleUsecases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29A65ADF777CF6705F87E4 /* GoogleUsecases.swift */; };
+		CBABCF985F5CFC572BA67049 /* GoogleAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D933B8CCDF515A1C1831393 /* GoogleAuthState.swift */; };
+		CBECA479ED955016F6C1C330 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C2B020F0C37BC3147CDA2 /* TokenStore.swift */; };
+		CC1B1B1B1B1B1B1B1B1B1B1B /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */; };
+		CC2B2B2B2B2B2B2B2B2B2B2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */; };
+		E2A524B589AA9BD396781024 /* GoogleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4DFA3B25F050B286262FF9 /* GoogleError.swift */; };
+		E874F640E7C76F878C970F77 /* YoutubeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625AB03512AF113F96F03B9 /* YoutubeDTO.swift */; };
+		F1DF631E03B633453933194A /* GoogleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFEF05A120B7A206B62BBA /* GoogleRepository.swift */; };
 		F3F542B628EAF94C0081E00A /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F3F542B528EAF94C0081E00A /* Swinject */; };
+		FE6F5FEB66ECAC6D8FC6FC5C /* GoogleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107C274BC3E2F14AF79AB30 /* GoogleApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +63,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
-		CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0A612479289CFE6300B02DEE /* S206Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = S206Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15FFEF05A120B7A206B62BBA /* GoogleRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleRepository.swift; sourceTree = "<group>"; };
+		1B29A65ADF777CF6705F87E4 /* GoogleUsecases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleUsecases.swift; sourceTree = "<group>"; };
+		2FC096A92B0CD7684685E32E /* GoogleDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleDataSource.swift; sourceTree = "<group>"; };
+		3D933B8CCDF515A1C1831393 /* GoogleAuthState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleAuthState.swift; sourceTree = "<group>"; };
+		8883486DB8F53CF780548C22 /* GoogleSignInManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleSignInManager.swift; sourceTree = "<group>"; };
+		8A0B81C34696E674C17DD095 /* YoutubeModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YoutubeModels.swift; sourceTree = "<group>"; };
+		A107C274BC3E2F14AF79AB30 /* GoogleApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleApi.swift; sourceTree = "<group>"; };
 		B4150D9128BC94B400934C3F /* SeoulUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulUsecase.swift; sourceTree = "<group>"; };
 		B4150D9428BC94D800934C3F /* SeoulUsecaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulUsecaseImpl.swift; sourceTree = "<group>"; };
 		B4150D9628BC992800934C3F /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -63,11 +82,6 @@
 		B45A3D70275DB60200660F6E /* NewCultureEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCultureEvent.swift; sourceTree = "<group>"; };
 		B45C41C328B3162A009C46DB /* SeoulApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulApi.swift; sourceTree = "<group>"; };
 		B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepositoryImpl.swift; sourceTree = "<group>"; };
-		BA000000000000000000AAA2 /* SeoulError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulError.swift; sourceTree = "<group>"; };
-		BA000000000000000000BBB2 /* SeoulRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepository.swift; sourceTree = "<group>"; };
-		BA000000000000000000CCC2 /* SeoulMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulMapper.swift; sourceTree = "<group>"; };
-		BA000000000000000000DDD1 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
-		BA000000000000000000EEE2 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		B45C41C928B3182B009C46DB /* S206SeoulTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S206SeoulTests.swift; sourceTree = "<group>"; };
 		B45C41D728B36A34009C46DB /* CulturalEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfo.swift; sourceTree = "<group>"; };
 		B45C41DA28B36F6B009C46DB /* CulturalEventInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventInfoResponse.swift; sourceTree = "<group>"; };
@@ -80,8 +94,22 @@
 		B47D0BBB27746C6300DD9C2C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B47D0BC427746D1A00DD9C2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B47D0BC627746D2A00DD9C2C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA000000000000000000AAA2 /* SeoulError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulError.swift; sourceTree = "<group>"; };
+		BA000000000000000000BBB2 /* SeoulRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulRepository.swift; sourceTree = "<group>"; };
+		BA000000000000000000CCC2 /* SeoulMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulMapper.swift; sourceTree = "<group>"; };
+		BA000000000000000000DDD1 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		BA000000000000000000EEE2 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		BA000000000000000000FFF1 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		BA000000000000000000FFF2 /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
+		BCD3DFE521789C4FA1562ED7 /* GoogleRepositoryImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleRepositoryImpl.swift; sourceTree = "<group>"; };
+		CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		D226EF1F469A80F216BECA82 /* GoogleAuthInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleAuthInterceptor.swift; sourceTree = "<group>"; };
+		DA0FB3A28EB4F965E0B4532B /* GoogleConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleConfig.swift; sourceTree = "<group>"; };
+		E18C2B020F0C37BC3147CDA2 /* TokenStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
+		F625AB03512AF113F96F03B9 /* YoutubeDTO.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YoutubeDTO.swift; sourceTree = "<group>"; };
+		F9F4AF4757E8B08556242B9B /* GoogleMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleMapper.swift; sourceTree = "<group>"; };
+		FD4DFA3B25F050B286262FF9 /* GoogleError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B45C41C728B31746009C46DB /* SeoulRepositoryImpl.swift */,
+				BCD3DFE521789C4FA1562ED7 /* GoogleRepositoryImpl.swift */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -118,6 +147,33 @@
 				B45C41C928B3182B009C46DB /* S206SeoulTests.swift */,
 			);
 			path = S206Tests;
+			sourceTree = "<group>";
+		};
+		590539ED9B3A7341A61D3852 /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				F625AB03512AF113F96F03B9 /* YoutubeDTO.swift */,
+			);
+			name = Youtube;
+			path = Youtube;
+			sourceTree = "<group>";
+		};
+		9A5869B2D12BE6833E8761E1 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				1B29A65ADF777CF6705F87E4 /* GoogleUsecases.swift */,
+			);
+			name = Google;
+			path = Google;
+			sourceTree = "<group>";
+		};
+		ABB8BB2A91808CCE2CCE1FA5 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8883486DB8F53CF780548C22 /* GoogleSignInManager.swift */,
+			);
+			name = Auth;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		B4150D9328BC94BF00934C3F /* Impl */ = {
@@ -136,15 +192,6 @@
 				BA000000000000000000FFF3 /* Config */,
 				B45A3D41275DAE1000660F6E /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		BA000000000000000000FFF3 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				BA000000000000000000FFF1 /* Secrets.xcconfig */,
-				BA000000000000000000FFF2 /* Secrets.xcconfig.example */,
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 		B45A3D41275DAE1000660F6E /* Products */ = {
@@ -171,6 +218,8 @@
 				CC1A1A1A1A1A1A1A1A1A1A1A /* LoadState.swift */,
 				CC2A2A2A2A2A2A2A2A2A2A2A /* MainViewModel.swift */,
 				B45A3D5C275DB23900660F6E /* View */,
+				3D933B8CCDF515A1C1831393 /* GoogleAuthState.swift */,
+				ABB8BB2A91808CCE2CCE1FA5 /* Auth */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -211,6 +260,7 @@
 			children = (
 				B4150D9328BC94BF00934C3F /* Impl */,
 				B4150D9128BC94B400934C3F /* SeoulUsecase.swift */,
+				9A5869B2D12BE6833E8761E1 /* Google */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -219,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				B45C41D928B36E97009C46DB /* CulturalEventInfo */,
+				590539ED9B3A7341A61D3852 /* Youtube */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -228,6 +279,7 @@
 			children = (
 				B45A3D70275DB60200660F6E /* NewCultureEvent.swift */,
 				B4150D9628BC992800934C3F /* Response.swift */,
+				D02847F0E50256564AB82E12 /* Google */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +297,8 @@
 			children = (
 				B45A3D65275DB34700660F6E /* Remote */,
 				B41DE5D9298CE33200532603 /* SeoulDataSource.swift */,
+				2FC096A92B0CD7684685E32E /* GoogleDataSource.swift */,
+				C2025529A000513E6DA4050B /* Local */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -254,6 +308,9 @@
 			children = (
 				BA000000000000000000DDD1 /* NetworkConfig.swift */,
 				B45C41C328B3162A009C46DB /* SeoulApi.swift */,
+				DA0FB3A28EB4F965E0B4532B /* GoogleConfig.swift */,
+				A107C274BC3E2F14AF79AB30 /* GoogleApi.swift */,
+				D226EF1F469A80F216BECA82 /* GoogleAuthInterceptor.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -297,10 +354,24 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		B47D0BC027746CD700DD9C2C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B45A3D5B275DB23300660F6E /* Data */,
+				BA000000000000000000EEE1 /* DI */,
+				B45A3D5A275DB22E00660F6E /* Domain */,
+				B45A3D59275DB22000660F6E /* Presentation */,
+				B45A3D43275DAE1000660F6E /* AppDelegate.swift */,
+				B45A3D45275DAE1000660F6E /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		BA000000000000000000AAA1 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
 				BA000000000000000000AAA2 /* SeoulError.swift */,
+				FD4DFA3B25F050B286262FF9 /* GoogleError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -309,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				BA000000000000000000BBB2 /* SeoulRepository.swift */,
+				15FFEF05A120B7A206B62BBA /* GoogleRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -317,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				BA000000000000000000CCC2 /* SeoulMapper.swift */,
+				F9F4AF4757E8B08556242B9B /* GoogleMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -329,17 +402,31 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
-		B47D0BC027746CD700DD9C2C /* App */ = {
+		BA000000000000000000FFF3 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				B45A3D5B275DB23300660F6E /* Data */,
-				BA000000000000000000EEE1 /* DI */,
-				B45A3D5A275DB22E00660F6E /* Domain */,
-				B45A3D59275DB22000660F6E /* Presentation */,
-				B45A3D43275DAE1000660F6E /* AppDelegate.swift */,
-				B45A3D45275DAE1000660F6E /* SceneDelegate.swift */,
+				BA000000000000000000FFF1 /* Secrets.xcconfig */,
+				BA000000000000000000FFF2 /* Secrets.xcconfig.example */,
 			);
-			path = App;
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C2025529A000513E6DA4050B /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				E18C2B020F0C37BC3147CDA2 /* TokenStore.swift */,
+			);
+			name = Local;
+			path = Local;
+			sourceTree = "<group>";
+		};
+		D02847F0E50256564AB82E12 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				8A0B81C34696E674C17DD095 /* YoutubeModels.swift */,
+			);
+			name = Google;
+			path = Google;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +569,20 @@
 				B45C41C828B31746009C46DB /* SeoulRepositoryImpl.swift in Sources */,
 				B4150D9528BC94D800934C3F /* SeoulUsecaseImpl.swift in Sources */,
 				B45A3D46275DAE1000660F6E /* SceneDelegate.swift in Sources */,
+				931021ADC8E39173A2EEE966 /* YoutubeModels.swift in Sources */,
+				E2A524B589AA9BD396781024 /* GoogleError.swift in Sources */,
+				F1DF631E03B633453933194A /* GoogleRepository.swift in Sources */,
+				BEA456115F8C6D922DB293F5 /* GoogleUsecases.swift in Sources */,
+				E874F640E7C76F878C970F77 /* YoutubeDTO.swift in Sources */,
+				A244F1D05BFEA42690CFFDB1 /* GoogleDataSource.swift in Sources */,
+				40B787E9E2C8E8F6CAFABCA7 /* GoogleConfig.swift in Sources */,
+				FE6F5FEB66ECAC6D8FC6FC5C /* GoogleApi.swift in Sources */,
+				19C197841A84F325DC602E19 /* GoogleAuthInterceptor.swift in Sources */,
+				CBECA479ED955016F6C1C330 /* TokenStore.swift in Sources */,
+				4497ACF899EA6154FDF3B9E1 /* GoogleMapper.swift in Sources */,
+				B21755B42CD872FE310DC239 /* GoogleRepositoryImpl.swift in Sources */,
+				CBABCF985F5CFC572BA67049 /* GoogleAuthState.swift in Sources */,
+				1DEDCF5947EAFA21B2D27BF2 /* GoogleSignInManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

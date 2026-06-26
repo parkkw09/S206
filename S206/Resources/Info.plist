@@ -4,6 +4,8 @@
 <dict>
 	<key>SEOUL_KEY</key>
 	<string>$(SEOUL_KEY)</string>
+	<key>GOOGLE_CLIENT_ID</key>
+	<string>$(GOOGLE_CLIENT_ID)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
