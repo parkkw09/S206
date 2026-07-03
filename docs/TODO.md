@@ -84,14 +84,14 @@
   - [x] `Config/Secrets.xcconfig.example` 커밋 (템플릿)
   - [x] `S206.xcodeproj/project.pbxproj` 의 App 타겟 Debug/Release 에 `baseConfigurationReference` 연결
   - [x] `Info.plist` 의 `SEOUL_KEY` 값을 `$(SEOUL_KEY)` 치환 토큰으로 교체
-  - [ ] README 에 키 발급/교체 절차 명시 (문서 작업, 후속)
+  - [x] README 에 키 발급/교체 절차 명시 (2026-07-03)
   - [ ] (선택) `git filter-repo` 로 히스토리에서 기존 키 제거 (별도 라운드)
 - [x] **(H-6)** ATS 예외 축소 — `NSAllowsArbitraryLoads` 제거, `NSExceptionDomains.openapi.seoul.go.kr` (NSIncludesSubdomains=true) 만 허용
 - [x] **(H-7)** 배포 타겟 통일 — 프로젝트/App/Tests 6개 지점을 전부 **iOS 15.0** 으로 통일, `xcodebuild build-for-testing` 통과
 - [x] **(L-7)** `Info.plist` 의 `LSApplicationCategoryType` 빈 값 키 제거 (H-5 작업 중 함께 정리)
 - [x] **(L-2)** `UIRequiredDeviceCapabilities` 에서 `armv7` 제거 → `arm64` 로 교체 (2026-06-29)
-- [ ] **(L-3)** 기존 `.DS_Store` 트래킹 해제 (`git rm --cached`)
-- [ ] **(L-1)** 주석 처리된 구버전 코드 블록 제거 (필요 부분은 본 docs 로 이관)
+- [x] **(L-3)** 기존 `.DS_Store` 트래킹 해제 — 트래킹 중인 파일 없음 확인 완료 (2026-07-03)
+- [x] **(L-1)** 주석 처리된 구버전 코드 블록 제거 — 리팩토링 과정에서 제거됨 확인 완료 (2026-07-03)
 - [x] **(L-5)** `SeoulData.swift` 의 파일 헤더 주석(`S206Local.swift`) 수정 — 이미 `SeoulData.swift` 파일은 삭제됨, 확인 완료 (2026-06-29)
 - [x] **(L-6)** `SceneDelegate.appDelegate` — 별도 프로퍼티 아닌 지역 변수로 사용 중, 문제 없음 확인 (2026-06-29)
 
@@ -121,7 +121,7 @@
 
 ## Phase 5-B — 리소스 정리 & 기능 확장
 
-- [ ] **(M-5)** `Localizable.strings` (en/ko) 재작성
+- [x] **(M-5)** `Localizable.strings` (en/ko) 재작성 및 소스 코드 연동 완료 (2026-07-03)
   - `app_name, event_list_title, loading, error_network, error_server, retry, …` 등 현 도메인 맞춤 키로 교체
 - [ ] **(M-6)** `Images.xcassets` 정리 — 사용 안 하는 book/bookmark/history/… 에셋 제거 후 실제 필요 에셋 추가
 - [ ] **(M-7)** `Colors.xcassets` 사용 여부 결정 (디자인 팔레트 확정 or 제거)

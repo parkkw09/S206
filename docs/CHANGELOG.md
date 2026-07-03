@@ -3,6 +3,18 @@
 이 문서는 `docs/` 폴더 자체의 변경 이력을 추적합니다.
 코드 변경 이력은 `git log` 를 참고하세요.
 
+## 2026-07-03 — 리포 위생 정리, API 키 문서 보완 및 다국어 리소스 적용
+
+- **코드 및 리소스**
+  - **(M-5)** `en.lproj/Localizable.strings`, `ko.lproj/Localizable.strings` 다국어 파일의 책 관련 잔재 키들을 제거하고 문화행사 도메인 키(`app_name`, `event_list_title`, `loading`, `error_network`, `error_server`, `retry` 등)로 재작성.
+  - `MainViewController.swift`의 `applyLoadState` 내의 하드코딩된 텍스트들을 `NSLocalizedString` 및 다국어 포맷 스트링으로 연동 완료.
+- **보안 및 문서**
+  - `docs/README.md`에 API 키 설정 가이드를 보완하여 Google Cloud Console을 통한 OAuth Client ID 발급 및 `Secrets.xcconfig` 기입 방법을 상세히 추가. (H-5 후속)
+- **리포 위생**
+  - **(L-3)** git 인덱스에 트래킹되는 `.DS_Store` 파일이 없음을 확인.
+  - **(L-1)** 소스 코드 내 불필요한 구버전 주석 코드가 리팩토링 과정에서 모두 정리되었음을 확인.
+  - `TODO.md` 및 `CHANGELOG.md` 갱신.
+
 ## 2026-06-29 — 코드리뷰 대응 (Phase 5-C) + Phase 4 Low 잔여
 
 [`code-review-2026-06-26.md`](./code-review-2026-06-26.md) 의 지적사항을 반영하고 Phase 4 Low 잔여 항목을 정리한 작업입니다.

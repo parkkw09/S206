@@ -56,23 +56,36 @@
 
 ### 1. API 키 준비 (최초 1회)
 
-`S206` 앱은 서울 열린데이터광장 OpenAPI 키를 필요로 합니다. 이 키는 저장소에 **커밋되지 않으며**, 각 개발자가 로컬에 별도 파일로 보관합니다.
+`S206` 앱은 서울 열린데이터광장 OpenAPI 키 및 Google OAuth 클라이언트 ID를 필요로 합니다. 이 키들은 저장소에 **커밋되지 않으며**, 각 개발자가 로컬에 별도 파일로 보관합니다.
 
-1. [서울 열린데이터광장](https://data.seoul.go.kr/) 에서 **문화행사 정보** API 인증키를 발급받습니다.
-2. 템플릿 파일을 복사해 로컬 전용 시크릿 파일을 만듭니다.
+1. **서울시 OpenAPI 키 발급**:
+   - [서울 열린데이터광장](https://data.seoul.go.kr/)에서 **문화행사 정보** API 인증키를 발급받습니다.
+
+2. **Google OAuth 클라이언트 ID 발급 (선택/필요 시)**:
+   - [Google Cloud Console](https://console.cloud.google.com/)에서 YouTube Data API v3를 활성화한 프로젝트를 생성합니다.
+   - **사용자 인증 정보** 메뉴에서 **OAuth 클라이언트 ID**를 생성합니다 (애플리케이션 유형: **iOS**).
+   - Bundle ID는 **`app.peter.S206`**으로 지정해야 합니다.
+
+3. **로컬 시크릿 파일 생성**:
+   템플릿 파일을 복사하여 로컬 전용 시크릿 파일을 만듭니다.
    ```bash
    cp Config/Secrets.xcconfig.example Config/Secrets.xcconfig
    ```
-3. `Config/Secrets.xcconfig` 의 `SEOUL_KEY` 값을 발급받은 키로 교체합니다.
-   ```
-   SEOUL_KEY = <YOUR_ACTUAL_KEY>
-   ```
-4. `Config/Secrets.xcconfig` 는 `.gitignore` 에 포함되어 있어 커밋되지 않습니다.
-5. 빌드 시 Xcode 가 `SEOUL_KEY` build setting 을 `Info.plist` 의 `$(SEOUL_KEY)` 토큰에 주입하며, `NetworkConfig.fromBundle()` 이 이를 읽어 `SeoulApi` 에 전달합니다. 키가 비어 있으면 `SeoulError.missingConfiguration(key: "SEOUL_KEY")` 가 던져지고 `AppContainer` 가 `fatalError` 로 변환합니다.
 
-> **키 교체**: `Config/Secrets.xcconfig` 의 값만 갱신하면 됩니다. 별도 빌드 설정 변경은 필요 없습니다.
+4. **키 설정**:
+   `Config/Secrets.xcconfig` 파일의 값을 실제 발급받은 키와 클라이언트 ID로 교체합니다.
+   ```ini
+   SEOUL_KEY = <발급받은_서울시_API_KEY>
+   GOOGLE_CLIENT_ID = <발급받은_Google_OAuth_iOS_클라이언트_ID>
+   ```
+
+5. **적용 확인**:
+   - `Config/Secrets.xcconfig`는 `.gitignore`에 포함되어 있어 안전하게 보호됩니다.
+   - 빌드 시 Xcode가 `SEOUL_KEY` 및 `GOOGLE_CLIENT_ID` 빌드 세팅을 `Info.plist`에 주입하며, 각각 `NetworkConfig`와 `GoogleConfig`를 통해 코드 내에서 활용됩니다. 키가 누락되었거나 비어 있다면 앱 구동 시 관련 에러를 발생시킵니다.
+
+> **키 교체**: `Config/Secrets.xcconfig` 파일의 값만 변경하면 자동으로 빌드에 주입됩니다.
 >
-> **git 히스토리 정리 (권장)**: 이 저장소 초기 히스토리에는 과거 `Info.plist` 에 평문으로 남아 있던 키가 아직 존재합니다. 운영 단계에서는 `git filter-repo` 로 히스토리에서 제거 + 키를 새로 재발급하는 것이 안전합니다.
+> **git 히스토리 정리 (권장)**: 이 저장소 초기 히스토리에는 과거 `Info.plist` 등에 평문으로 남아 있던 키가 존재할 수 있습니다. 운영 단계로 넘어가기 전 `git filter-repo`로 히스토리를 정리하거나 새 키로 교체할 것을 권장합니다.
 
 ### 2. 빌드 & 실행
 

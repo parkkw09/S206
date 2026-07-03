@@ -6,14 +6,11 @@
   
 */
 
-"app_name" = "S206";
-"new_book" = "새로운 책";
-"detail_book" = "상세한 책";
-"bookmark" = "책갈피";
-"ascending" = "오름차순";
-"descending" = "내림차순";
-"history" = "검색기록";
-"search" = "검색";
-"search_hint" = "검색어";
-"add_bookmark" = "책갈피 추가";
-"delete_bookmark" = "책갈피 삭제";
+"app_name" = "서울 문화행사";
+"event_list_title" = "문화 행사 목록";
+"loading" = "로딩 중...";
+"error_network" = "네트워크 오류가 발생했습니다. 연결 상태를 확인해 주세요.";
+"error_server" = "서버 에러가 발생했습니다.";
+"retry" = "다시 시도";
+"event_count_format" = "문화 행사 %d건";
+"error_format" = "에러: %@";

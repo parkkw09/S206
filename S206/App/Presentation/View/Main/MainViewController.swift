@@ -73,16 +73,19 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
         case .loading:
             // Pull-to-refresh 가 아닌 최초 로딩인 경우에만 레이블 표시
             if myTableView.refreshControl?.isRefreshing != true {
-                myLabel.text = "Loading..."
+                myLabel.text = NSLocalizedString("loading", comment: "Loading state text")
             }
         case .loadingMore:
             break
         case .success:
             myTableView.refreshControl?.endRefreshing()
-            myLabel.text = "문화 행사 \(viewModel?.events.count ?? 0)건"
+            let count = viewModel?.events.count ?? 0
+            let format = NSLocalizedString("event_count_format", comment: "Format for event count")
+            myLabel.text = String(format: format, count)
         case .error(let message):
             myTableView.refreshControl?.endRefreshing()
-            myLabel.text = "Error: \(message)"
+            let format = NSLocalizedString("error_format", comment: "Format for error message")
+            myLabel.text = String(format: format, message)
         }
     }
 

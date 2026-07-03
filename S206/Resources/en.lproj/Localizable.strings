@@ -6,14 +6,12 @@
   
 */
 
-"app_name" = "S206";
-"new_book" = "New";
-"detail_book" = "Detail Book";
-"bookmark" = "BookMark";
-"ascending" = "Ascending";
-"descending" = "Descending";
-"history" = "History";
-"search" = "Search";
-"search_hint" = "Search";
-"add_bookmark" = "Add Bookmark";
-"delete_bookmark" = "Delete Bookmark";
+"app_name" = "Seoul Festivals";
+"event_list_title" = "Cultural Events";
+"loading" = "Loading...";
+"error_network" = "Network error. Please check your connection.";
+"error_server" = "Server error occurred.";
+"retry" = "Retry";
+"event_count_format" = "%d Cultural Events";
+"error_format" = "Error: %@";
+
