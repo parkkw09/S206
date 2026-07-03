@@ -3,6 +3,25 @@
 이 문서는 `docs/` 폴더 자체의 변경 이력을 추적합니다.
 코드 변경 이력은 `git log` 를 참고하세요.
 
+## 2026-06-29 — 코드리뷰 대응 (Phase 5-C) + Phase 4 Low 잔여
+
+[`code-review-2026-06-26.md`](./code-review-2026-06-26.md) 의 지적사항을 반영하고 Phase 4 Low 잔여 항목을 정리한 작업입니다.
+
+- **코드**
+  - **(🔴#3)** `MainViewModel` 에 `@MainActor` 적용. 내부 `MainActor.run` 래핑 전부 제거. 컴파일러가 메인 스레드 접근을 보장.
+  - **(🔴#5)** `refresh()` Task 경합 해결. `currentTask: Task<Void, Never>?` 프로퍼티로 진행 중 Task 보관 + 취소. `Task.isCancelled` 검사 추가.
+  - **(🔴#1,#2)** 앱 실행 즉시 강제 OAuth 로그인 제거. `MainViewController` 에서 `startGoogleSignInIfNeeded()` 및 `signInManagerFactory` 관련 코드 삭제. `AppContainer.inject(into:)` 에서 `signInManagerFactory` 파라미터 제거.
+  - **(🟢)** `AppContainer.inject(into:)` 의 `self == nil` 무의미한 fallback 방어 코드 제거.
+  - **(🟡#8)** `GoogleApi.mapToGoogleError` 에서 `responseValidationFailed` 를 statusCode 기반 세분화: 403 → 접근 거부 메시지, 404 → `.notFound`, 그 외 → `.unknown`.
+  - **(🟡#5-UI)** `MainViewController` 에 `UIRefreshControl` 추가. Pull-to-Refresh 로 `viewModel.refresh()` 호출 연결. `loadState` 바인딩에서 `endRefreshing()` 호출.
+  - **(🟢#10)** 파일명 ↔ 타입명 일치: `NewCultureEvent.swift` → `CulturalEvent.swift` (도메인 모델), `CulturalEvent.swift` → `CulturalEventDTO.swift` (DTO). `project.pbxproj` 참조 갱신.
+  - **(L-2)** `Info.plist` 의 `UIRequiredDeviceCapabilities` 에서 `armv7` → `arm64` 교체.
+  - **(L-5)** `SeoulData.swift` 파일 삭제 확인 완료 (이미 삭제됨).
+  - **(L-6)** `SceneDelegate.appDelegate` — 별도 프로퍼티 아닌 지역 변수로 사용 중, 문제 없음 확인.
+- **문서**
+  - `TODO.md` — Phase 5-C (코드리뷰 대응) 섹션 추가. Phase 4 의 L-2/L-5/L-6 체크.
+  - `CHANGELOG.md` — 본 엔트리 추가.
+
 ## 2026-06-26 — mos 기조 정렬 (Phase 5-A) 완료
 
 **참조 프로젝트**: 안드로이드 대응 앱 `mos` (같은 서울 문화행사 API, Kotlin + Hilt + Compose)의 아키텍처 기조를 iOS S206 에 이식.

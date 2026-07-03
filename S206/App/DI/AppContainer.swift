@@ -7,7 +7,6 @@
 
 import Foundation
 import Swinject
-import AuthenticationServices
 
 final class AppContainer {
 
@@ -110,14 +109,8 @@ final class AppContainer {
     }
 
     // MARK: - Google sign-in (presentation-time wiring)
-
-    /// `GoogleSignInManager` 는 표시 컨텍스트(UIWindow) 가 필요하므로 View 시점에 생성합니다.
-    func makeGoogleSignInManager(anchorProvider: @escaping () -> ASPresentationAnchor) -> GoogleSignInManaging {
-        GoogleSignInManager(
-            config: container.resolve(GoogleConfig.self)!,
-            anchorProvider: anchorProvider
-        )
-    }
+    // Google 로그인은 현재 자동 트리거를 제거한 상태입니다.
+    // 향후 명시적 로그인 버튼 도입 시 makeGoogleSignInManager 를 복원합니다.
 
     // MARK: - Presentation wiring
 
@@ -125,18 +118,7 @@ final class AppContainer {
         guard let viewModel = container.resolve(MainViewModel.self) else {
             fatalError("MainViewModel 을 resolve 하지 못했습니다. AppContainer 등록을 확인하세요.")
         }
-        viewController.configure(
-            viewModel: viewModel,
-            signInManagerFactory: { [weak self] anchorProvider in
-                guard let self else {
-                    return GoogleSignInManager(
-                        config: GoogleConfig(apiBaseURL: URL(string: "https://www.googleapis.com")!,
-                                             clientId: "", scope: ""),
-                        anchorProvider: anchorProvider
-                    )
-                }
-                return self.makeGoogleSignInManager(anchorProvider: anchorProvider)
-            }
-        )
+        viewController.configure(viewModel: viewModel)
     }
 }
+

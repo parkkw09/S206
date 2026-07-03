@@ -89,11 +89,11 @@
 - [x] **(H-6)** ATS 예외 축소 — `NSAllowsArbitraryLoads` 제거, `NSExceptionDomains.openapi.seoul.go.kr` (NSIncludesSubdomains=true) 만 허용
 - [x] **(H-7)** 배포 타겟 통일 — 프로젝트/App/Tests 6개 지점을 전부 **iOS 15.0** 으로 통일, `xcodebuild build-for-testing` 통과
 - [x] **(L-7)** `Info.plist` 의 `LSApplicationCategoryType` 빈 값 키 제거 (H-5 작업 중 함께 정리)
-- [ ] **(L-2)** `UIRequiredDeviceCapabilities` 에서 `armv7` 제거
+- [x] **(L-2)** `UIRequiredDeviceCapabilities` 에서 `armv7` 제거 → `arm64` 로 교체 (2026-06-29)
 - [ ] **(L-3)** 기존 `.DS_Store` 트래킹 해제 (`git rm --cached`)
 - [ ] **(L-1)** 주석 처리된 구버전 코드 블록 제거 (필요 부분은 본 docs 로 이관)
-- [ ] **(L-5)** `SeoulData.swift` 의 파일 헤더 주석(`S206Local.swift`) 수정 — 이미 `SeoulData.swift` 파일은 삭제됨(M-2 와 함께 정리), 확인 후 체크
-- [ ] **(L-6)** `SceneDelegate.appDelegate` 프로퍼티 제거 또는 사용처 명확화
+- [x] **(L-5)** `SeoulData.swift` 의 파일 헤더 주석(`S206Local.swift`) 수정 — 이미 `SeoulData.swift` 파일은 삭제됨, 확인 완료 (2026-06-29)
+- [x] **(L-6)** `SceneDelegate.appDelegate` — 별도 프로퍼티 아닌 지역 변수로 사용 중, 문제 없음 확인 (2026-06-29)
 
 ## Phase 5-A — mos 기조 정렬 (MVVM + 모델 완성) ✅ 완료 (2026-06-26)
 
@@ -130,6 +130,24 @@
 - [ ] 상세 화면 (행사 클릭 시 이미지/설명/링크)
 - [ ] `mainImage` 로딩 (Kingfisher 등)
 - [ ] 검색/필터 (자치구, 테마 코드)
+
+## Phase 5-C — 코드리뷰 대응 (2026-06-29)
+
+[`code-review-2026-06-26.md`](./code-review-2026-06-26.md) 의 지적사항을 반영한 작업입니다.
+
+- [x] **(🔴#3)** `MainViewModel` 에 `@MainActor` 적용 — 컴파일러가 메인 스레드 접근을 보장, `MainActor.run` 래핑 전부 제거
+- [x] **(🔴#5)** `refresh()` 의 진행 중 Task 미취소 경합 해결 — `currentTask` 프로퍼티 도입, `Task.isCancelled` 검사
+- [x] **(🔴#1,#2)** 앱 실행 즉시 강제 OAuth 로그인 제거 — `startGoogleSignInIfNeeded()` 및 관련 코드 삭제
+- [x] **(🟢 AppContainer)** `inject(into:)` 의 `self == nil` 무의미한 fallback 방어 코드 제거
+- [x] **(🟡#8)** `GoogleApi.mapToGoogleError` — `responseValidationFailed` 를 statusCode 기반 세분화 (403/404 구분)
+- [x] **(🟡#5-UI)** `refresh()` UI 연결 — `UIRefreshControl` 추가, Pull-to-Refresh 동작
+- [x] **(🟢#10)** 파일명 ↔ 타입명 일치 — `NewCultureEvent.swift` → `CulturalEvent.swift`, `CulturalEvent.swift` → `CulturalEventDTO.swift`
+
+### 완료 기준
+- 코드리뷰 🔴 항목 3건 해결 (동시성 레이스, 강제 로그인, Task 경합)
+- 코드리뷰 🟡 항목 2건 해결 (에러 매핑, Pull-to-Refresh)
+- 코드리뷰 🟢 항목 2건 해결 (dead 방어 코드, 파일명 불일치)
+- `xcodebuild build-for-testing` 통과 (Xcode 에서 확인 필요)
 
 ---
 

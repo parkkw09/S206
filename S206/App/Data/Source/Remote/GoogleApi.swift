@@ -88,7 +88,18 @@ final class GoogleApi: GoogleRemoteDataSource {
         case .sessionTaskFailed, .invalidURL, .requestAdaptationFailed, .requestRetryFailed:
             return .network(message: error.localizedDescription)
         case .responseValidationFailed:
-            return .network(message: error.localizedDescription)
+            // statusCode 기반 세분화 — 403/404 등을 network 로 뭉치지 않고 구분합니다.
+            if let code = statusCode {
+                switch code {
+                case 403:
+                    return .network(message: "접근이 거부되었습니다 (403). API 할당량 초과 또는 권한 부족일 수 있습니다.")
+                case 404:
+                    return .notFound(message: "요청한 리소스를 찾을 수 없습니다 (404).")
+                default:
+                    return .unknown(message: "서버 응답 오류 (\(code)): \(error.localizedDescription)")
+                }
+            }
+            return .unknown(message: error.localizedDescription)
         default:
             return .unknown(message: error.localizedDescription)
         }

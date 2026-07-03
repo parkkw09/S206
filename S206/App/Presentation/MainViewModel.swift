@@ -7,10 +7,13 @@
 //  - LoadState 로 UI 상태 일원화
 //  - Combine @Published 로 StateFlow 와 동일한 단방향 데이터 흐름
 //
+//  @MainActor 로 모든 가변 상태 접근이 메인 스레드에서 이루어짐을 컴파일러가 보장합니다.
+//
 
 import Foundation
 import Combine
 
+@MainActor
 final class MainViewModel: ObservableObject {
     private static let pageSize = 50
 
@@ -24,6 +27,9 @@ final class MainViewModel: ObservableObject {
     private var totalCount = 0
     private var nextStart = 1
     private var isLoading = false
+
+    /// 진행 중 페이지 로딩 Task. refresh() 시 취소하여 이전 로드와의 경합을 방지합니다.
+    private var currentTask: Task<Void, Never>?
 
     init(usecase: SeoulUsecase,
          saveGoogleTokenUseCase: SaveGoogleTokenUseCase,
@@ -44,27 +50,27 @@ final class MainViewModel: ObservableObject {
         isLoading = true
         loadState = nextStart == 1 ? .loading : .loadingMore
 
-        Task { [weak self] in
+        currentTask = Task { [weak self] in
             guard let self else { return }
             do {
                 let page = try await usecase(startIndex: nextStart, endIndex: nextStart + Self.pageSize - 1)
-                await MainActor.run {
-                    self.totalCount = page.totalCount
-                    self.events.append(contentsOf: page.events)
-                    self.nextStart += Self.pageSize
-                    self.loadState = .success
-                    self.isLoading = false
-                }
+                guard !Task.isCancelled else { return }
+                self.totalCount = page.totalCount
+                self.events.append(contentsOf: page.events)
+                self.nextStart += Self.pageSize
+                self.loadState = .success
+                self.isLoading = false
             } catch {
-                await MainActor.run {
-                    self.loadState = .error(error.localizedDescription)
-                    self.isLoading = false
-                }
+                guard !Task.isCancelled else { return }
+                self.loadState = .error(error.localizedDescription)
+                self.isLoading = false
             }
         }
     }
 
     func refresh() {
+        currentTask?.cancel()
+        currentTask = nil
         events = []
         totalCount = 0
         nextStart = 1
@@ -79,10 +85,9 @@ final class MainViewModel: ObservableObject {
     }
 
     func onGoogleSignInSuccess(token: String) {
-        Task { [weak self] in
-            guard let self else { return }
+        Task {
             await saveGoogleTokenUseCase(token)
-            await MainActor.run { self.googleAuthState = .authenticated }
+            self.googleAuthState = .authenticated
         }
     }
 
@@ -91,10 +96,9 @@ final class MainViewModel: ObservableObject {
     }
 
     func signOut() {
-        Task { [weak self] in
-            guard let self else { return }
+        Task {
             await clearGoogleTokenUseCase()
-            await MainActor.run { self.googleAuthState = .unauthenticated }
+            self.googleAuthState = .unauthenticated
         }
     }
 }
